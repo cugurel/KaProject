@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Template\OdevTemplate\.DS_Store" />
+    <None Include="wwwroot\temple\.github\workflows\handle-new-issue-comment.yml" />
+    <None Include="wwwroot\temple\.github\workflows\handle-new-issue.yml" />
+    <None Include="wwwroot\temple\.github\workflows\issue-staler.yml" />
+  </ItemGroup>
+
+</Project>
