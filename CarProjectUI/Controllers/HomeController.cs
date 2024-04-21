@@ -14,6 +14,8 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Yazýlým Geliþtirici";
+            TempData["NameAndSurname"] = "Çaðrý Uðurel";
             return View();
         }
 
