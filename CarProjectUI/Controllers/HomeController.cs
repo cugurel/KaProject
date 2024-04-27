@@ -1,3 +1,4 @@
+using DataAccess.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,6 +8,7 @@ namespace CarProjectUI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        Context c = new Context();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -14,9 +16,11 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index()
         {
+            var categoryList = c.Categories.ToList();
+
             ViewBag.Title = "Yazýlým Geliþtirici";
             TempData["NameAndSurname"] = "Çaðrý Uðurel";
-            return View();
+            return View(categoryList);
         }
 
         public IActionResult Privacy()
