@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrete;
+﻿using DataAccess.Abstract;
+using DataAccess.Concrete;
+using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,13 +8,14 @@ namespace CarProjectUI.Controllers
 {
     public class CategoryController : Controller
     {
-        Context c = new Context();
+        EfCategoryRepository categoryRepository = new EfCategoryRepository();
+
         public IActionResult Index()
         {
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
 
-            var categoryList = c.Categories.ToList();
+            var categoryList = categoryRepository.GetAll();
 
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
@@ -25,15 +28,15 @@ namespace CarProjectUI.Controllers
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
 
-            var category = c.Categories.Find(id);
+            var category = categoryRepository.GetById(id);
             return View(category);
         }
 
         [HttpPost]
         public IActionResult UpdateCategory(Category category)
         {
-            c.Categories.Update(category);
-            c.SaveChanges();
+            categoryRepository.Update(category);
+            
             return Redirect("Index");
         }
 
@@ -49,17 +52,15 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
-            c.Categories.Add(category);
-            c.SaveChanges();
+            categoryRepository.Add(category);
             return Redirect("Index");
         }
 
         
         public IActionResult DeleteCategory(int id)
         {
-            var category = c.Categories.Find(id);
-            c.Categories.Remove(category);
-            c.SaveChanges();
+            var category = categoryRepository.GetById(id);
+            categoryRepository.Delete(category);
             return RedirectToAction("Index","Category");
         }
     }

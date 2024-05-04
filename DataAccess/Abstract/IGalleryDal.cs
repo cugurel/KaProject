@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IGalleryDal
+    public interface IGalleryDal:IGenericDal<Gallery>
     {
-        List<Gallery> GetAll();
-        void Add(Gallery gallery);
-        void Delete(Gallery gallery);
-        void Update(Gallery gallery);
-        Gallery GetById(int id);
+        
     }
 }
