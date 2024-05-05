@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
-                                <form class="form-horizontal" action="/Category/AddCategory" method="post">
+                                <form class="form-horizontal" id="example-form" onsubmit="sendForm(event)" action="/Category/AddCategory" method="post">
 
                                     
                                     <div class="form-group">
@@ -233,6 +233,25 @@
     <script src="~/projecttemp/js/inspinia.js"></script>
     <script src="~/projecttemp/js/plugins/pace/pace.min.js"></script>
     <script src="~/projecttemp/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        function sendForm(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Kaydetmek istediğinizden emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: "Evet!",
+                cancelButtonText: "Vazgeç"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const myForm = document.getElementById('example-form');
+                    myForm.submit();
+                }
+            })
+        }
+    </script>
     <script>
         $(document).ready(function () {
             $('.i-checks').iCheck({
