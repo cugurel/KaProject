@@ -36,7 +36,14 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult UpdateGallery(Gallery gallery)
         {
-            efGalleryRepository.Add(gallery);
+            efGalleryRepository.Update(gallery);
+            return RedirectToAction("Index", "Gallery");
+        }
+
+        public IActionResult DeleteGallery(int id)
+        {
+            var gallery = efGalleryRepository.GetById(id);
+            efGalleryRepository.Delete(gallery);
             return RedirectToAction("Index", "Gallery");
         }
     }

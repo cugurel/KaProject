@@ -17,8 +17,6 @@ namespace CarProjectUI.Controllers
 
             var categoryList = categoryRepository.GetAll();
 
-            ViewBag.Title = "Yazılım Geliştirici";
-            TempData["NameAndSurname"] = "Çağrı Uğurel";
             return View(categoryList);
         }
 
