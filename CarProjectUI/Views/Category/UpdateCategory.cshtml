@@ -16,7 +16,10 @@
     <link href="~/projecttemp/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="~/projecttemp/css/animate.css" rel="stylesheet">
     <link href="~/projecttemp/css/style.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -191,7 +194,7 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form class="form-horizontal" action="/Category/UpdateCategory" method="post">
+                                <form class="form-horizontal" id="example-form" onsubmit="sendForm(event)" action="/Category/UpdateCategory" method="post">
                                
                                 <div class="form-group">
 
@@ -235,6 +238,25 @@
     <script src="~/projecttemp/js/inspinia.js"></script>
     <script src="~/projecttemp/js/plugins/pace/pace.min.js"></script>
     <script src="~/projecttemp/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        function sendForm(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Güncellemek istediğinizden emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: "Evet!",
+                cancelButtonText: "Vazgeç"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const myForm = document.getElementById('example-form');
+                    myForm.submit();
+                }
+            })
+        }
+    </script>
         <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({
