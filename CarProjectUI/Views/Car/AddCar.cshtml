@@ -189,24 +189,34 @@
                             </div>
                             <div class="ibox-content">
                                 <div class="row">
-                                    <form role="form">
+                                    <form role="form" action="/Car/AddCar" method="post">
                                     <div class="col-sm-6 b-r">
                                         <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
                                         <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
                                         <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
                                         <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
                                         <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div>
-                                            <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
-                                        </div>
+                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
 
                                     </div>
                                     <div class="col-sm-6">
-                                        
                                         <div class="form-group"><label>Yıl</label> <input type="text" name="Year" class="form-control"></div>
                                         <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
                                         <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
                                         <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
+                                            <div class="form-group">
+                                                <label>Kategori Seçimi</label>
+                                                    <select class="form-control" name="CategoryId">
+                                                        <option selected>Kategori Seçiniz</option>
+                                                        <option value="1">Coupe</option>
+                                                        <option value="2">Sedan</option>
+                                                        <option value="3">Hb</option>
+                                                        <option value="4">SUV Hybrid</option>
+                                                    </select>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
+                                            </div>
                                     </div>
                                     </form>
                                 </div>
