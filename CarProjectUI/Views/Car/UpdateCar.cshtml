@@ -1,4 +1,5 @@
 ﻿@using Entity.Concrete
+@model Car
 <!DOCTYPE html>
 <html>
 
@@ -190,39 +191,37 @@
                             </div>
                             <div class="ibox-content">
                                 <div class="row">
-                                    <form role="form" action="/Car/AddCar" method="post">
-                                    <div class="col-sm-6 b-r">
-                                         
-                                        <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
-                                        <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
-                                        <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
-                                        <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
-                                        <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
+                                    <form role="form" action="/Car/UpdateCar" method="post">
+                                        <div class="col-sm-6 b-r">
+                                            <input type="hidden" name="Id" value="@Model.Id" class="form-control">
+                                            <div class="form-group"><label>İlan No</label> <input type="text" value="@Model.Announcement" name="Announcement" class="form-control"></div>
+                                            <div class="form-group"><label>İlan Tarihi</label> <input type="date" value="@Model.AnnouncementDate" name="AnnouncementDate" class="form-control"></div>
+                                            <div class="form-group"><label>Marka</label> <input type="text" name="Brand" value="@Model.Brand" class="form-control"></div>
+                                            <div class="form-group"><label>Seri</label> <input type="text" name="Serial" value="@Model.Serial" class="form-control"></div>
+                                            <div class="form-group"><label>Model</label> <input type="text" name="Model" value="@Model.Model" class="form-control"></div>
+                                            <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" value="@Model.Price" class="form-control"></div>
 
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group"><label>Yıl</label> <input type="text" name="Year" class="form-control"></div>
-                                        <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
-                                        <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
-                                        <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group"><label>Yıl</label> <input type="text" name="Year" value="@Model.Year" class="form-control"></div>
+                                            <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" value="@Model.Fuel" class="form-control"></div>
+                                            <div class="form-group"><label>Vites</label> <input type="text" name="Gear" value="@Model.Gear" class="form-control"></div>
+                                            <div class="form-group"><label>Km</label> <input type="text" name="Km" value="@Model.Km" class="form-control"></div>
                                             <div class="form-group">
                                                 <label>Kategori Seçimi</label>
-                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
-                                                
-                                                    @* select class="form-control" name="CategoryId">
-                                                        <option selected>Kategori Seçiniz</option>
-                                                        @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
+                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId",@value=@Model.CategoryId, @class = "form-control" })
+                                                @* <select class="form-control" name="CategoryId">
+                                                    <option selected>Kategori Seçiniz</option>
+                                                    @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
                                                     {
                                                         <option value="@item.Id">@item.Name</option>
                                                     }
-                                                    </select> *@
+                                                </select> *@
                                             </div>
-                                            <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
                                             <div>
-                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
+                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Güncelle</strong></button>
                                             </div>
-                                    </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

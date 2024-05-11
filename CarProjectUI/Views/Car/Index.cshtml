@@ -1,5 +1,5 @@
-﻿@using Entity.Concrete
-@model IEnumerable<Car>
+﻿@using Entity.Concrete.Dtos
+@model IEnumerable<CarCategoryDto>
 
 <!DOCTYPE html>
 <html>
@@ -235,14 +235,9 @@
                                         <th>İlan No</th>
                                         <th>İlan Tarihi</th>
                                         <th>Marka</th>
-                                        <th>Seri</th>
                                         <th>Model</th>
-                                        <th>Yıl</th>
-                                        <th>Yakıt</th>
-                                        <th>Vites</th>
-                                        <th>Km</th>
-                                        <th>Fiyat</th>
                                         <th>Kategori</th>
+                                        <th>Detay</th>
                                         <th>Düzenle</th>
                                         <th>Sil</th>
                                     </tr>
@@ -254,16 +249,11 @@
                                             <td>@item.Announcement</td>
                                             <td>@item.AnnouncementDate</td>
                                             <td>@item.Brand</td>
-                                            <td>@item.Serial</td>
                                             <td>@item.Model</td>
-                                            <td>@item.Year</td>
-                                            <td>@item.Fuel</td>
-                                            <td>@item.Gear</td>
-                                            <td>@item.Km</td>
-                                            <td>@item.Price</td>
-                                            <td>@item.CategoryId</td>
-                                            <td><a href="/Category/UpdateCategory/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
-                                            <td><a href="/Category/DeleteCategory/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
+                                            <td>@item.CategoryName</td>
+                                            <td><a href="/Car/CarDetail/@item.Id" class="btn btn-warning btn-sm">Detay</a></td>
+                                            <td><a href="/Car/UpdateCar/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
+                                            <td><a href="/Car/DeleteCar/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
                                         </tr>
                                     }
 
