@@ -17,7 +17,7 @@ namespace Entity.Concrete
         public string Brand { get; set; }
         public string? Serial { get; set; }
         public string Model { get; set; }
-        public string? Year { get; set; }
+        public int? Year { get; set; }
         public string? Fuel { get; set; }
         public string? Gear { get; set; }
         public string? Km { get; set; }
@@ -25,3 +25,4 @@ namespace Entity.Concrete
         public int CategoryId { get; set; }
     }
 }
+//Data Transfer Object --> DTO

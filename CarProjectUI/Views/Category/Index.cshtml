@@ -1,4 +1,7 @@
-﻿@using Entity.Concrete
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@using Entity.Concrete
 @model IEnumerable<Category>
 
 
@@ -233,7 +236,6 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Kategori Adı</th>
                                         <th>Düzenle</th>
                                         <th>Sil</th>
@@ -243,7 +245,6 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@item.Id</td>
                                             <td>@item.Name</td>
                                             <td><a href="/Category/UpdateCategory/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
                                             <td><a href="/Category/DeleteCategory/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
@@ -252,7 +253,11 @@
 
                                 </tbody>
                             </table>
-
+                            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Category", new { page = page }), new PagedListRenderOptions()
+                       {
+                           LiElementClasses = new string[] { "page-item" },
+                           PageClasses = new string[] { "page-link" }
+                       })
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,14 @@ namespace CarProjectUI.Controllers
             
             var categories = c.Categories.ToList();
             ViewBag.Category = categoryList;
+
+            List<SelectListItem> yearList = (from x in c.Years.ToList()
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.YearInfo,
+                                                     Value = x.Id.ToString()
+                                                 }).ToList();
+            ViewBag.Year = yearList;
             return View();
         }
 

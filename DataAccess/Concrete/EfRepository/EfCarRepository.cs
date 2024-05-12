@@ -12,10 +12,13 @@ namespace DataAccess.Concrete.EfRepository
     public class EfCarRepository : EfGenericRepository<Car>, ICarDal
     {
         Context context = new Context();
+
+        
         public List<CarCategoryDto> GetAllCarsWithCategory()
         {
             var result = (from c in context.Cars
                           join ct in context.Categories on c.CategoryId equals ct.Id
+                          join y in context.Years on c.Year equals y.Id 
                           select new CarCategoryDto
                           {
                               Id = c.Id,
@@ -24,7 +27,7 @@ namespace DataAccess.Concrete.EfRepository
                               Brand = c.Brand,
                               Serial = c.Serial,
                               Model = c.Model,
-                              Year = c.Year,
+                              Year = y.YearInfo,
                               Fuel = c.Fuel,
                               Gear = c.Gear,
                               Km = c.Km,
@@ -34,6 +37,7 @@ namespace DataAccess.Concrete.EfRepository
                           });
 
             return result.ToList();
+
 
         }
     }

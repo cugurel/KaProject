@@ -3,6 +3,7 @@ using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace CarProjectUI.Controllers
 {
@@ -10,12 +11,12 @@ namespace CarProjectUI.Controllers
     {
         EfCategoryRepository categoryRepository = new EfCategoryRepository();
 
-        public IActionResult Index()
+        public IActionResult Index(int page =1)
         {
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
 
-            var categoryList = categoryRepository.GetAll();
+            var categoryList = categoryRepository.GetAll().ToPagedList(page,3);
 
             return View(categoryList);
         }
