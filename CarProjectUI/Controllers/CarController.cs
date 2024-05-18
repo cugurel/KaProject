@@ -1,4 +1,5 @@
-﻿using DataAccess.Concrete;
+﻿using Business.Concrete;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,10 @@ namespace CarProjectUI.Controllers
 {
     public class CarController : Controller
     {
-        EfCarRepository carRepository = new EfCarRepository();
+        CarManager carManager = new CarManager(new EfCarRepository());
         public IActionResult Index()
         {
-            var values = carRepository.GetAllCarsWithCategory();
+            var values = carManager.GetAllCarsWithCategory();
             return View(values);
         }
 
@@ -44,14 +45,14 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult AddCar(Car car)
         {
-            carRepository.Add(car);
+            carManager.Add(car);
             return Redirect("Index");
         }
 
         public IActionResult DeleteCar(int id)
         {
-            var car = carRepository.GetById(id);
-            carRepository.Delete(car);
+            var car = carManager.GetById(id);
+            carManager.Delete(car);
             return RedirectToAction("Index","Car");
         }
 
@@ -66,14 +67,14 @@ namespace CarProjectUI.Controllers
                                                      Value = x.Id.ToString()
                                                  }).ToList();
             ViewBag.Category = categoryList;
-            var car = carRepository.GetById(id);
+            var car = carManager.GetById(id);
             return View(car);
         }
 
         [HttpPost]
         public IActionResult UpdateCar(Car car)
         {
-            carRepository.Update(car);
+            carManager.Update(car);
             return RedirectToAction("Index", "Car");
         }
     }
