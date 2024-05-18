@@ -207,7 +207,11 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Vasıta Listesi</h5>
+
+                            
                             <div class="ibox-tools">
+
+                                
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
@@ -228,8 +232,8 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-
-                            <table class="table table-bordered">
+                            <input type="text" class="form-control mb-2" id="myInput" onkeyup="myFunction()" placeholder="Araba Markası Giriniz">
+                            <table class="table table-bordered" id="carTable">
                                 <thead>
                                     <tr>
                                         <th>İlan No</th>
@@ -942,6 +946,29 @@
                 "New row",
                 "New row"]);
 
+        }
+    </script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("carTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
         }
     </script>
     <style>
