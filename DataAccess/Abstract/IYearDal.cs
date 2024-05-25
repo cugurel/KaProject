@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    internal interface IYearDal : IGenericDal<Year>
+    public interface IYearDal : IGenericDal<Year>
     {
     }
 }

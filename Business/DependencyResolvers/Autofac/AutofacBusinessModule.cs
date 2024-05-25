@@ -15,6 +15,11 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+
+            //Year classı bağımlılık yönetimi
+            builder.RegisterType<YearManager>().As<IYearService>().SingleInstance();
+            builder.RegisterType<EfYearRepository>().As<IYearDal>().SingleInstance();
+
             //Car classı bağımlılık yönetimi
             builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
             builder.RegisterType<EfCarRepository>().As<ICarDal>().SingleInstance();

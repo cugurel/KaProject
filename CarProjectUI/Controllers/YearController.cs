@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrete.EfRepository;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +8,16 @@ namespace CarProjectUI.Controllers
 {
     public class YearController : Controller
     {
-        EfYearRepository yearRepository = new EfYearRepository();
+        IYearService _yearService;
+
+        public YearController(IYearService yearService)
+        {
+            _yearService = yearService;
+        }
+
         public IActionResult Index()
         {
-            var yearInfos = yearRepository.GetAll();
+            var yearInfos = _yearService.GetAll();
             return View(yearInfos);
         }
 
@@ -23,7 +31,7 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult AddYear(Year year)
         {
-            yearRepository.Add(year);
+            _yearService.Add(year);
             return RedirectToAction("Index","Year");
         }
 
@@ -31,7 +39,7 @@ namespace CarProjectUI.Controllers
         [HttpGet]
         public IActionResult UpdateYear(int id)
         {
-            var year = yearRepository.GetById(id);
+            var year = _yearService.GetById(id);
             return View(year);
         }
 
@@ -39,15 +47,15 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult UpdateYear(Year year)
         {
-            yearRepository.Update(year);
+            _yearService.Update(year);
             return RedirectToAction("Index", "Year");
         }
 
 
         public IActionResult DeleteYear(int id)
         {
-            var year = yearRepository.GetById(id);
-            yearRepository.Delete(year);
+            var year = _yearService.GetById(id);
+            _yearService.Delete(year);
             return RedirectToAction("Index", "Year");
         }
     }

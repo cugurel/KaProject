@@ -7,6 +7,7 @@ namespace CarProjectUI.Controllers
 {
     public class HomeController : Controller
     {
+        Context c = new Context();
         ICategoryService _categoryService;
 
         public HomeController(ICategoryService categoryService)
@@ -14,11 +15,13 @@ namespace CarProjectUI.Controllers
             _categoryService = categoryService;
         }
 
-        Context c = new Context();
+        
         
 
         public IActionResult Index()
         {
+            ViewBag.CarCount = c.Cars.Count();
+            ViewBag.CategoryCount = c.Categories.Count();
             var categoryList = _categoryService.GetAll();
 
             ViewBag.Title = "Yazýlým Geliþtirici";

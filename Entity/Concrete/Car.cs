@@ -13,7 +13,7 @@ namespace Entity.Concrete
     public class Car : IEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public string Announcement { get; set; }
         public DateTime AnnouncementDate { get; set; }
         public string Brand { get; set; }
