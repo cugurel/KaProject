@@ -1,14 +1,16 @@
 ﻿using Entity.Abstract;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class Car:IEntity
+    public class Car : IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -22,7 +24,10 @@ namespace Entity.Concrete
         public string? Gear { get; set; }
         public string? Km { get; set; }
         public string? Price { get; set; }
+        public string? FileUrl { get; set; }
         public int CategoryId { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; }
     }
 }
-//Data Transfer Object --> DTO

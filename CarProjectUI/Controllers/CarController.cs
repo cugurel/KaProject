@@ -1,18 +1,26 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 
 namespace CarProjectUI.Controllers
 {
     public class CarController : Controller
     {
-        CarManager carManager = new CarManager(new EfCarRepository());
+        ICarService _carService;
+
+        public CarController(ICarService carService)
+        {
+            _carService = carService;
+        }
+
         public IActionResult Index()
         {
-            var values = carManager.GetAllCarsWithCategory();
+            var values = _carService.GetAllCarsWithCategory();
             return View(values);
         }
 
@@ -43,16 +51,33 @@ namespace CarProjectUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCar(Car car)
+        public async Task<IActionResult> AddCar(Car car)
         {
-            carManager.Add(car);
+            if(car.File != null)
+            {
+                var item = car.File;
+                var extend = Path.GetExtension(item.FileName);
+                var randomName = ($"{Guid.NewGuid()}{extend}");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\CarImages", randomName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await item.CopyToAsync(stream);
+                }
+
+                car.FileUrl = randomName;
+                _carService.Add(car);
+                return Redirect("Index");
+            }
+
+            _carService.Add(car);
             return Redirect("Index");
         }
 
         public IActionResult DeleteCar(int id)
         {
-            var car = carManager.GetById(id);
-            carManager.Delete(car);
+            var car = _carService.GetById(id);
+            _carService.Delete(car);
             return RedirectToAction("Index","Car");
         }
 
@@ -67,14 +92,15 @@ namespace CarProjectUI.Controllers
                                                      Value = x.Id.ToString()
                                                  }).ToList();
             ViewBag.Category = categoryList;
-            var car = carManager.GetById(id);
+
+            var car = _carService.GetById(id);
             return View(car);
         }
 
         [HttpPost]
         public IActionResult UpdateCar(Car car)
         {
-            carManager.Update(car);
+            _carService.Update(car);
             return RedirectToAction("Index", "Car");
         }
     }

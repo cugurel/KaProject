@@ -236,6 +236,7 @@
                             <table class="table table-bordered" id="carTable">
                                 <thead>
                                     <tr>
+                                        <th>İd</th>
                                         <th>İlan No</th>
                                         <th>İlan Tarihi</th>
                                         <th>Marka</th>
@@ -251,6 +252,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
+                                            <td>@item.Id</td>
                                             <td>@item.Announcement</td>
                                             <td>@item.AnnouncementDate.ToShortDateString()</td>
                                             <td>@item.Brand</td>
