@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entity.Concrete;
+using Entity.Concrete.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace Business.Concrete
         public List<Customer> GetAll()
         {
             return _customerDal.GetAll();
+        }
+
+        public List<CustomerDto> GetAllCustomersWithCityAndTown()
+        {
+            return _customerDal.GetAllCustomersWithCityAndTown();
         }
 
         public Customer GetById(int id)

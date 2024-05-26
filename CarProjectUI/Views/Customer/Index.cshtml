@@ -1,5 +1,5 @@
-﻿@using Entity.Concrete
-@model IEnumerable<Customer>
+﻿@using Entity.Concrete.Dtos
+@model IEnumerable<CustomerDto>
 
 <!DOCTYPE html>
 <html>
@@ -254,8 +254,8 @@
                                         <tr>
                                             <td>@item.Name</td>
                                             <td>@item.Surname</td>
-                                            <td>@item.City</td>
-                                            <td>@item.Town</td>
+                                            <td>@item.CityName</td>
+                                            <td>@item.TownName</td>
                                             <td>@item.BirthDate.ToShortDateString()</td>
                                             <td>@item.BirthPlace</td>
                                             <td>@item.Gender</td>

@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Entity.Concrete.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace Business.Abstract
         void Update(Customer customer);
         Customer GetById(int id);
         List<Customer> GetAll();
+        List<CustomerDto> GetAllCustomersWithCityAndTown();
     }
 }

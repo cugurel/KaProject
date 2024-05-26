@@ -17,7 +17,7 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index()
         {
-            var customers = _customerService.GetAll();
+            var customers = _customerService.GetAllCustomersWithCityAndTown();
             return View(customers);
         }
 
@@ -60,22 +60,30 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCustomer(Customer customer)
         {
-
-
-
-            if (customer.File != null)
+            if (customer.File != null && customer.File.Count>0)
             {
-                var extend = Path.GetExtension(customer.File.FileName);
-                var randomName = $"{Guid.NewGuid()}{extend}";
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\CustomerFiles", randomName);
-
-                using(var stream = new FileStream(path, FileMode.Create))
-                {
-                    await customer.File.CopyToAsync(stream);
-                }
-                customer.FileUrl = randomName;
                 _customerService.Add(customer);
+                foreach (var item in customer.File)
+                {
+
+                    var extend = Path.GetExtension(item.FileName);
+                    var randomName = $"{Guid.NewGuid()}{extend}";
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\CustomerFiles", randomName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await item.CopyToAsync(stream);
+                    }
+                    CustomerFile customerFile = new CustomerFile();
+                    customerFile.CustomerId = customer.Id;
+                    customerFile.FileUrl = randomName;
+                    c.CustomerFiles.Add(customerFile);
+                    c.SaveChanges();
+                    
+                    
+                }
                 return RedirectToAction("Index", "Customer");
+
             }
             else
             {
