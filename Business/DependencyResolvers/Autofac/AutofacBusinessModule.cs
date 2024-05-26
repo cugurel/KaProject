@@ -16,6 +16,10 @@ namespace Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
 
+            //Customer classı bağımlılık yönetimi
+            builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
+            builder.RegisterType<EfCustomerRepository>().As<ICustomerDal>().SingleInstance();
+
             //Year classı bağımlılık yönetimi
             builder.RegisterType<YearManager>().As<IYearService>().SingleInstance();
             builder.RegisterType<EfYearRepository>().As<IYearDal>().SingleInstance();
