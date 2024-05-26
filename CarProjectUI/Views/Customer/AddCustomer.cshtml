@@ -14,7 +14,29 @@
     <link href="~/projecttemp/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="~/projecttemp/css/animate.css" rel="stylesheet">
     <link href="~/projecttemp/css/style.css" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#City').change(function () {
+                var id = $('#City').val();
+                $.ajax({
+                    url: '/Customer/GetTown',
+                    data: { p: id },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#Town').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#Town').append("<option value='" + data[i].value + "' > " + data[i].text + " </option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -195,8 +217,8 @@
 
                                             <div class="form-group"><label>Adı</label> <input type="text" name="Name" class="form-control"></div>
                                             <div class="form-group"><label>Soyadı</label> <input type="text" name="Surname" class="form-control"></div>
-                                            <div class="form-group"><label>Şehir</label> <input type="text" name="City" class="form-control"></div>
-                                            <div class="form-group"><label>İlçe</label> <input type="text" name="Town" class="form-control"></div>
+                                            <div class="form-group"><label>Sehir</label> @Html.DropDownList("City", (List<SelectListItem>)ViewBag.City, "Sehir Seçiniz", new { @name = "City", @class = "form-control" })</div>
+                                            <div class="form-group"><label>İlçe</label> @Html.DropDownList("Town", (List<SelectListItem>)ViewBag.Town, "İlçe Seçiniz", new { @name = "Town", @class = "form-control" })</div>
 
                                         </div>
                                         <div class="col-sm-6">

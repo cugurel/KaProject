@@ -1,13 +1,15 @@
 ﻿using Business.Abstract;
+using DataAccess.Concrete;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CarProjectUI.Controllers
 {
     public class CustomerController : Controller
     {
         ICustomerService _customerService;
-
+        Context c = new Context();
         public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
@@ -19,15 +21,48 @@ namespace CarProjectUI.Controllers
             return View(customers);
         }
 
+        public JsonResult GetTown(int p)
+        {
+            var towns = (from x in c.Towns
+                         where x.CityId == p
+                         select new
+                         {
+                             Text = x.Name,
+                             Value = x.Id.ToString()
+                         }).ToList();
+
+            return Json(towns);
+        }
+
         [HttpGet]
         public IActionResult AddCustomer()
         {
+            List<SelectListItem> cityList = (from x in c.Cities.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.Name,
+                                                 Value = x.Id.ToString()
+                                             }).ToList();
+            ViewBag.City = cityList;
+
+
+            List<SelectListItem> townList = (from x in c.Towns.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.Name,
+                                                 Value = x.Id.ToString()
+                                             }).ToList();
+            ViewBag.Town = townList;
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddCustomer(Customer customer)
         {
+
+
+
             if (customer.File != null)
             {
                 var extend = Path.GetExtension(customer.File.FileName);
