@@ -22,9 +22,9 @@
         <div>
            
             <p>Yeni Hesap Oluştur</p>
-            <form class="m-t" role="form" action="/Auth/Register">
+            <form class="m-t" role="form" action="/Auth/Register" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="Name" placeholder="Ad" required="">
+                    <input type="text" class="form-control" name="FirstName" placeholder="Ad" required="">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="Surname" placeholder="Soyad" required="">
@@ -39,7 +39,7 @@
                     <input type="email" class="form-control" name="Email" placeholder="Email" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" name="Password" placeholder="Password" required="">
                 </div>
                 
                 <button type="submit" class="btn btn-primary block full-width m-b">Kaydı Tamamla</button>
