@@ -1,21 +1,23 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace CarProjectUI.Controllers
 {
     public class CategoryController : Controller
     {
-        EfCategoryRepository categoryRepository = new EfCategoryRepository();
+        CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
 
-        public IActionResult Index()
+        public IActionResult Index(int page =1)
         {
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
 
-            var categoryList = categoryRepository.GetAll();
+            var categoryList = categoryManager.GetAll().ToPagedList(page,5);
 
             return View(categoryList);
         }
@@ -26,14 +28,14 @@ namespace CarProjectUI.Controllers
             ViewBag.Title = "Yazılım Geliştirici";
             TempData["NameAndSurname"] = "Çağrı Uğurel";
 
-            var category = categoryRepository.GetById(id);
+            var category = categoryManager.GetById(id);
             return View(category);
         }
 
         [HttpPost]
         public IActionResult UpdateCategory(Category category)
         {
-            categoryRepository.Update(category);
+            categoryManager.Update(category);
             
             return Redirect("Index");
         }
@@ -50,15 +52,15 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
-            categoryRepository.Add(category);
+            categoryManager.Add(category);
             return Redirect("Index");
         }
 
         
         public IActionResult DeleteCategory(int id)
         {
-            var category = categoryRepository.GetById(id);
-            categoryRepository.Delete(category);
+            var category = categoryManager.GetById(id);
+            categoryManager.Delete(category);
             return RedirectToAction("Index","Category");
         }
     }

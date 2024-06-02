@@ -1,4 +1,6 @@
 ﻿@using Entity.Concrete
+@model Year
+
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +16,10 @@
     <link href="~/projecttemp/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="~/projecttemp/css/animate.css" rel="stylesheet">
     <link href="~/projecttemp/css/style.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -146,16 +151,16 @@
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Vasıta Ekle</h2>
+                    <h2>Yıl Bilgisi Güncelle</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="index.html">Anasayfa</a>
+                            <a href="index.html">Ana Panel</a>
                         </li>
                         <li>
-                            <a>Vasıta Yönetimi</a>
+                            <a>Yıl Yönetimi</a>
                         </li>
                         <li class="active">
-                            <strong>Vasıta Ekle</strong>
+                            <strong>Yıl Bilgisi Güncelle</strong>
                         </li>
                     </ol>
                 </div>
@@ -164,10 +169,11 @@
             </div>
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
+
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-
+                                <h5>Yıl Bilgisi Güncelleme</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -189,48 +195,30 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
-                                <div class="row">
-                                    <form role="form" action="/Car/AddCar" method="post" enctype="multipart/form-data">
-                                    <div class="col-sm-6 b-r">
-                                         
-                                        <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
-                                        <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
-                                        <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
-                                        <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
-                                        <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
+                                <form class="form-horizontal" id="example-form" onsubmit="sendForm(event)" action="/Year/UpdateYear" method="post">
 
+                                    <div class="form-group">
+
+                                        <div class="col-lg-10">
+                                            <input type="hidden" name="Id" value="@Model.Id" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group"><label>Yıl</label> @Html.DropDownList("Year", (List<SelectListItem>)ViewBag.Year, "Yıl Seçiniz", new { @name = "Year", @class = "form-control" })</div>
-                                        <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
-                                        <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
-                                        <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
-                                            <div class="form-group">
-                                                <label>Kategori Seçimi</label>
-                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
-                                                
-                                                    @* select class="form-control" name="CategoryId">
-                                                        <option selected>Kategori Seçiniz</option>
-                                                        @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
-                                                    {
-                                                        <option value="@item.Id">@item.Name</option>
-                                                    }
-                                                    </select> *@
-                                            </div>
-                                            <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
-                                            <div>
-                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
-                                            </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Yıl</label>
+
+                                        <div class="col-lg-10"><input type="text" name="YearInfo" value="@Model.YearInfo" class="form-control"></div>
                                     </div>
-                                    </form>
-                                </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button class="btn btn-sm btn-primary" type="submit">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -253,6 +241,25 @@
     <script src="~/projecttemp/js/inspinia.js"></script>
     <script src="~/projecttemp/js/plugins/pace/pace.min.js"></script>
     <script src="~/projecttemp/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        function sendForm(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Güncellemek istediğinizden emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: "Evet!",
+                cancelButtonText: "Vazgeç"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const myForm = document.getElementById('example-form');
+                    myForm.submit();
+                }
+            })
+        }
+    </script>
     <script>
         $(document).ready(function () {
             $('.i-checks').iCheck({

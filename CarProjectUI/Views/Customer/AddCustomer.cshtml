@@ -14,7 +14,29 @@
     <link href="~/projecttemp/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="~/projecttemp/css/animate.css" rel="stylesheet">
     <link href="~/projecttemp/css/style.css" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#CityId').change(function () {
+                var id = $('#CityId').val();
+                $.ajax({
+                    url: '/Customer/GetTown',
+                    data: { p: id },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#TownId').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#TownId').append("<option value='" + data[i].value + "' > " + data[i].text + " </option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -146,16 +168,16 @@
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Vasıta Ekle</h2>
+                    <h2>Müşteri Ekle</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">Anasayfa</a>
                         </li>
                         <li>
-                            <a>Vasıta Yönetimi</a>
+                            <a>Müşteri Yönetimi</a>
                         </li>
                         <li class="active">
-                            <strong>Vasıta Ekle</strong>
+                            <strong>Müşteri Ekle</strong>
                         </li>
                     </ol>
                 </div>
@@ -190,39 +212,25 @@
                             </div>
                             <div class="ibox-content">
                                 <div class="row">
-                                    <form role="form" action="/Car/AddCar" method="post" enctype="multipart/form-data">
-                                    <div class="col-sm-6 b-r">
-                                         
-                                        <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
-                                        <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
-                                        <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
-                                        <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
-                                        <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
+                                    <form role="form" action="/Customer/AddCustomer" method="post" enctype="multipart/form-data">
+                                        <div class="col-sm-6 b-r">
 
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group"><label>Yıl</label> @Html.DropDownList("Year", (List<SelectListItem>)ViewBag.Year, "Yıl Seçiniz", new { @name = "Year", @class = "form-control" })</div>
-                                        <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
-                                        <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
-                                        <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
-                                            <div class="form-group">
-                                                <label>Kategori Seçimi</label>
-                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
-                                                
-                                                    @* select class="form-control" name="CategoryId">
-                                                        <option selected>Kategori Seçiniz</option>
-                                                        @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
-                                                    {
-                                                        <option value="@item.Id">@item.Name</option>
-                                                    }
-                                                    </select> *@
+                                            <div class="form-group"><label>Adı</label> <input type="text" name="Name" class="form-control"></div>
+                                            <div class="form-group"><label>Soyadı</label> <input type="text" name="Surname" class="form-control"></div>
+                                            <div class="form-group"><label>Sehir</label> @Html.DropDownList("CityId", (List<SelectListItem>)ViewBag.City, "Sehir Seçiniz", new { @name = "CityId", @class = "form-control" })</div>
+                                            <div class="form-group"><label>İlçe</label> @Html.DropDownList("TownId", (List<SelectListItem>)ViewBag.Town, "İlçe Seçiniz", new { @name = "TownId", @class = "form-control" })</div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group"><label>Doğum Tarihi</label> <input type="date" name="BirthDate" class="form-control"></div>
+                                            <div class="form-group"><label>Doğum Yeri</label> <input type="text" name="BirthPlace" class="form-control"></div>
+                                            <div class="form-group"><label>Cinsiyet</label> <input type="text" name="Gender" class="form-control"></div>
+                                            <div class="form-group"><label>Dosya</label> <input type="file" name="File" class="form-control" multiple></div>
+@*                                             <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
+ *@                                            <div>
+                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Müşteri Ekle</strong></button>
                                             </div>
-                                            <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
-                                            <div>
-                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
-                                            </div>
-                                    </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

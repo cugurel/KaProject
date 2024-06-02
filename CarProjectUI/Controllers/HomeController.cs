@@ -1,3 +1,4 @@
+using Business.Abstract;
 using DataAccess.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,17 +7,22 @@ namespace CarProjectUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
         Context c = new Context();
-        public HomeController(ILogger<HomeController> logger)
+        ICategoryService _categoryService;
+
+        public HomeController(ICategoryService categoryService)
         {
-            _logger = logger;
+            _categoryService = categoryService;
         }
+
+        
+        
 
         public IActionResult Index()
         {
-            var categoryList = c.Categories.ToList();
+            ViewBag.CarCount = c.Cars.Count();
+            ViewBag.CategoryCount = c.Categories.Count();
+            var categoryList = _categoryService.GetAll();
 
             ViewBag.Title = "Yazýlým Geliþtirici";
             TempData["NameAndSurname"] = "Çaðrý Uðurel";

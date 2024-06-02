@@ -1,4 +1,5 @@
 ﻿@using Entity.Concrete
+@model Customer
 <!DOCTYPE html>
 <html>
 
@@ -190,39 +191,25 @@
                             </div>
                             <div class="ibox-content">
                                 <div class="row">
-                                    <form role="form" action="/Car/AddCar" method="post" enctype="multipart/form-data">
-                                    <div class="col-sm-6 b-r">
-                                         
-                                        <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
-                                        <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
-                                        <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
-                                        <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
-                                        <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
+                                    <form role="form" action="/Customer/UpdateCustomer" method="post">
+                                        <div class="col-sm-6 b-r">
+                                            <input type="hidden" name="Id" value="@Model.Id" class="form-control">
+                                            <div class="form-group"><label>Adı</label> <input type="text" name="Name" value="@Model.Name" class="form-control"></div>
+                                            <div class="form-group"><label>Soyadı</label> <input type="text" name="Surname" value="@Model.Surname" class="form-control"></div>
+                                            <div class="form-group"><label>Şehir</label> <input type="text" name="City" value="@Model.CityId" class="form-control"></div>
+                                            <div class="form-group"><label>İlçe</label> <input type="text" name="Town" value="@Model.TownId" class="form-control"></div>
 
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group"><label>Yıl</label> @Html.DropDownList("Year", (List<SelectListItem>)ViewBag.Year, "Yıl Seçiniz", new { @name = "Year", @class = "form-control" })</div>
-                                        <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
-                                        <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
-                                        <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
-                                            <div class="form-group">
-                                                <label>Kategori Seçimi</label>
-                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
-                                                
-                                                    @* select class="form-control" name="CategoryId">
-                                                        <option selected>Kategori Seçiniz</option>
-                                                        @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
-                                                    {
-                                                        <option value="@item.Id">@item.Name</option>
-                                                    }
-                                                    </select> *@
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group"><label>Doğum Tarihi</label> <input type="datetime" value="@Model.BirthDate" name="BirthDate" class="form-control"></div>
+                                            <div class="form-group"><label>Doğum Yeri</label> <input type="text" value="@Model.BirthPlace" name="BirthPlace" class="form-control"></div>
+                                            <div class="form-group"><label>Cinsiyet</label> <input type="text" value="@Model.Gender" name="Gender" class="form-control"></div>
+
+                                            @*                                             <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
+                                            *@                                            <div>
+                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Müşteri Güncelle</strong></button>
                                             </div>
-                                            <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
-                                            <div>
-                                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Vasıta Ekle</strong></button>
-                                            </div>
-                                    </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

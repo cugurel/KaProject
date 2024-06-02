@@ -15,6 +15,10 @@ namespace DataAccess.Concrete
             optionsBuilder.UseSqlServer("server = (localdb)\\local; database=uqrtml; integrated security = true; TrustServerCertificate=True;");
         }
 
+        public DbSet<CustomerFile> CustomerFiles { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Town> Towns { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gallery> Galleries { get; set; }

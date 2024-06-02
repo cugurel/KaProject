@@ -1,9 +1,5 @@
-﻿@using X.PagedList;
-@using X.PagedList.Mvc.Core;
-
-@using Entity.Concrete
-@model IEnumerable<Category>
-
+﻿@using Entity.Concrete.Dtos
+@model IEnumerable<CustomerDto>
 
 <!DOCTYPE html>
 <html>
@@ -210,8 +206,12 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Kategori Listesi</h5>
+                            <h5>Müşteri Listesi</h5>
+
+
                             <div class="ibox-tools">
+
+
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
@@ -232,11 +232,18 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-
-                            <table class="table table-bordered">
+                            <input type="text" class="form-control mb-2" id="myInput" onkeyup="myFunction()" placeholder="Müşteri İsmi Giriniz">
+                            <table class="table table-bordered" id="carTable">
                                 <thead>
                                     <tr>
-                                        <th>Kategori Adı</th>
+                                        <th>Ad</th>
+                                        <th>Soyad</th>
+                                        <th>Şehir</th>
+                                        <th>İlçe</th>
+                                        <th>Doğum Tarihi</th>
+                                        <th>Doğum Yeri</th>
+                                        <th>Cinsiyet</th>
+                                        <th>Dosya</th>
                                         <th>Düzenle</th>
                                         <th>Sil</th>
                                     </tr>
@@ -246,19 +253,21 @@
                                     {
                                         <tr>
                                             <td>@item.Name</td>
-                                            <td><a href="/Category/UpdateCategory/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
-                                            <td><a href="/Category/DeleteCategory/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
+                                            <td>@item.Surname</td>
+                                            <td>@item.CityName</td>
+                                            <td>@item.TownName</td>
+                                            <td>@item.BirthDate.ToShortDateString()</td>
+                                            <td>@item.BirthPlace</td>
+                                            <td>@item.Gender</td>
+                                            <td><a href="../CustomerFiles/@item.FileUrl">İndir</a></td>
+                                            <td><a href="/Customer/UpdateCustomer/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
+                                            <td><a href="/Customer/DeleteCustomer/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
                                         </tr>
                                     }
 
                                 </tbody>
                             </table>
-                            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Category", 
-                            new { page = page }), new PagedListRenderOptions()
-                       {
-                           LiElementClasses = new string[] { "page-item" },
-                           PageClasses = new string[] { "page-link" }
-                       })
+
                         </div>
                     </div>
                 </div>
@@ -939,6 +948,29 @@
                 "New row",
                 "New row"]);
 
+        }
+    </script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("carTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
         }
     </script>
     <style>
