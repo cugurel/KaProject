@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IYearService
+    public interface IYearService:IGenericService<Year>
     {
-        void Add(Year year);
-        void Delete(Year year);
-        void Update(Year year);
-        Year GetById(int id);
-        List<Year> GetAll();
+        
     }
 }
