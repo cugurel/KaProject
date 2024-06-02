@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICustomerService
+    public interface ICustomerService:IGenericService<Customer>
     {
-        void Add(Customer customer);
-        void Delete(Customer customer);
-        void Update(Customer customer);
-        Customer GetById(int id);
-        List<Customer> GetAll();
+        
         List<CustomerDto> GetAllCustomersWithCityAndTown();
     }
 }

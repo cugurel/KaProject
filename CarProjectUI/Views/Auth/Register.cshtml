@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Register</title>
+
+    <link href="~/projecttemp/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/projecttemp/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/projecttemp/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="~/projecttemp/css/animate.css" rel="stylesheet">
+    <link href="~/projecttemp/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+           
+            <p>Yeni Hesap Oluştur</p>
+            <form class="m-t" role="form" action="/Auth/Register">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Name" placeholder="Ad" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Surname" placeholder="Soyad" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Username" placeholder="Kullanıcı Adı" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Phone" placeholder="Telefon" required="">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="Email" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" required="">
+                </div>
+                
+                <button type="submit" class="btn btn-primary block full-width m-b">Kaydı Tamamla</button>
+
+                <p class="text-muted text-center"><small>Zaten hesabınız var mı?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/Auth/Login">Giriş Yap</a>
+            </form>
+            <p class="m-t">  </p>
+        </div>
+    </div>
+
+    <script src="~/projecttemp/js/jquery-2.1.1.js"></script>
+    <script src="~/projecttemp/js/bootstrap.min.js"></script>
+    <script src="~/projecttemp/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICarService
+    public interface ICarService:IGenericService<Car>
     {
-        void Add(Car car);
-        void Delete(Car car);
-        void Update(Car car);
-        Car GetById(int id);
-        List<Car> GetAll();
+        
         List<CarCategoryDto> GetAllCarsWithCategory();
     }
 }

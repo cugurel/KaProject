@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IGalleryService
+    public interface IGalleryService:IGenericService<Gallery>
     {
-        void Add(Gallery gallery);
-        void Delete(Gallery gallery);
-        void Update(Gallery gallery);
-        Gallery GetById(int id);
         List<Gallery> GetAll();
     }
 }
