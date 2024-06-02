@@ -1,12 +1,15 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers.Autofac;
+using CarProjectUI.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<ApplicationContext>(options =>
+options.UseSqlServer("server = Cagri; database=CarProjectDb; integrated security = true; TrustServerCertificate=True;", builder => builder.EnableRetryOnFailure()));
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).
     ConfigureContainer<ContainerBuilder>(builder =>
     {
