@@ -92,5 +92,11 @@ namespace CarProjectUI.Controllers
             }
             return View();
         }
+
+        public IActionResult Logout()
+        {
+            _signinManager.SignOutAsync();
+            return RedirectToAction("Login","Auth");
+        }
     }
 }

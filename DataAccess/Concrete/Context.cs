@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server = (localdb)\\local; database=uqrtml; integrated security = true; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("server = Cagri; database=CarProjectDb; integrated security = true; TrustServerCertificate=True;");
         }
 
         public DbSet<CustomerFile> CustomerFiles { get; set; }

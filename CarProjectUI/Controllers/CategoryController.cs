@@ -3,33 +3,56 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 using X.PagedList;
 
 namespace CarProjectUI.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
 
-        public IActionResult Index(int page =1)
+        string apiUrl = "https://localhost:7261/api/Category/";
+        public async Task<IActionResult> Index(int page =1)
         {
-            ViewBag.Title = "Yazılım Geliştirici";
-            TempData["NameAndSurname"] = "Çağrı Uğurel";
+            using var httpClient = new HttpClient();
+            var result = await httpClient.GetAsync
+                (apiUrl + "GetAllCategories");
 
-            var categoryList = categoryManager.GetAll().ToPagedList(page,5);
+            var jsonString = result.Content.ReadAsStringAsync().Result;
+            var categories = JsonConvert.DeserializeObject<List<Category>>(jsonString);
 
-            return View(categoryList);
+            //ViewBag.Title = "Yazılım Geliştirici";
+            //TempData["NameAndSurname"] = "Çağrı Uğurel";
+
+            var categoryList = categories.ToPagedList(page, 5);
+
+            return View(categories);
         }
 
         [HttpGet]
-        public IActionResult UpdateCategory(int id)
+        public async Task<IActionResult> UpdateCategory(int id)
         {
-            ViewBag.Title = "Yazılım Geliştirici";
-            TempData["NameAndSurname"] = "Çağrı Uğurel";
+            using var httpClient = new HttpClient();
+            var result = await httpClient.GetAsync
+                (apiUrl + "GetById/"+id);
 
-            var category = categoryManager.GetById(id);
-            return View(category);
+            if (result.IsSuccessStatusCode)
+            {
+                var jsonCategory = await result.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<Category>(jsonCategory);
+                return View(value);
+            }
+            return View(null);
+            //ViewBag.Title = "Yazılım Geliştirici";
+            //TempData["NameAndSurname"] = "Çağrı Uğurel";
+
+            //var category = categoryManager.GetById(id);
+            //return View(category);
         }
 
         [HttpPost]
@@ -50,10 +73,19 @@ namespace CarProjectUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(Category category)
         {
-            categoryManager.Add(category);
-            return Redirect("Index");
+            using var httpClient = new HttpClient();
+            var jsonCategory = JsonConvert.SerializeObject(category);
+            StringContent content = new StringContent(jsonCategory,Encoding.UTF8,"application/json");
+
+            var result = await httpClient.PostAsync(apiUrl,content);
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category");
+            }
+
+            return View();
         }
 
         

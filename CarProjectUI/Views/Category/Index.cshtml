@@ -4,12 +4,10 @@
 @using Entity.Concrete
 @model IEnumerable<Category>
 
-
 <!DOCTYPE html>
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -253,12 +251,12 @@
 
                                 </tbody>
                             </table>
-                            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Category", 
+                            @* @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Category", 
                             new { page = page }), new PagedListRenderOptions()
                        {
                            LiElementClasses = new string[] { "page-item" },
                            PageClasses = new string[] { "page-link" }
-                       })
+                       }) *@
                         </div>
                     </div>
                 </div>

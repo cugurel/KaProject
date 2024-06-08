@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers.Autofac;
+using CarProjectUI.CustomFilter;
 using CarProjectUI.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc(
+    config =>
+    {
+        config.Filters.Add(new ResponseCacheFilter());
+    }
+);
 builder.Services.AddDbContext<ApplicationContext>(options =>
 options.UseSqlServer("server = Cagri; database=CarProjectDb; integrated security = true; TrustServerCertificate=True;", builder => builder.EnableRetryOnFailure()));
 builder.Services.AddIdentity<User,IdentityRole>().

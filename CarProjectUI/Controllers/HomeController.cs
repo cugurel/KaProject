@@ -1,10 +1,12 @@
 using Business.Abstract;
 using DataAccess.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace CarProjectUI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         Context c = new Context();
@@ -15,8 +17,6 @@ namespace CarProjectUI.Controllers
             _categoryService = categoryService;
         }
 
-        
-        
 
         public IActionResult Index()
         {
