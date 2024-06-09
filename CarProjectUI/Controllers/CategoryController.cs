@@ -17,10 +17,11 @@ namespace CarProjectUI.Controllers
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
 
         string apiUrl = "https://localhost:7261/api/Category/";
+        HttpClient client = new HttpClient();
         public async Task<IActionResult> Index(int page =1)
         {
-            using var httpClient = new HttpClient();
-            var result = await httpClient.GetAsync
+            
+            var result = await client.GetAsync
                 (apiUrl + "GetAllCategories");
 
             var jsonString = result.Content.ReadAsStringAsync().Result;
@@ -37,8 +38,8 @@ namespace CarProjectUI.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateCategory(int id)
         {
-            using var httpClient = new HttpClient();
-            var result = await httpClient.GetAsync
+            
+            var result = await client.GetAsync
                 (apiUrl + "GetById/"+id);
 
             if (result.IsSuccessStatusCode)
@@ -56,11 +57,19 @@ namespace CarProjectUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateCategory(Category category)
+        public async Task<IActionResult> UpdateCategory(Category category)
         {
-            categoryManager.Update(category);
-            
-            return Redirect("Index");
+            var jsonCategory = JsonConvert.SerializeObject(category);
+            StringContent content = new StringContent(jsonCategory, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync(apiUrl + "UpdateCategory", content);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category");
+            }
+            return View();
+
+            //categoryManager.Update(category);
+            //return Redirect("Index");
         }
 
         [HttpGet]
@@ -75,11 +84,10 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCategory(Category category)
         {
-            using var httpClient = new HttpClient();
             var jsonCategory = JsonConvert.SerializeObject(category);
             StringContent content = new StringContent(jsonCategory,Encoding.UTF8,"application/json");
 
-            var result = await httpClient.PostAsync(apiUrl,content);
+            var result = await client.PostAsync(apiUrl,content);
             if (result.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Category");
@@ -89,11 +97,15 @@ namespace CarProjectUI.Controllers
         }
 
         
-        public IActionResult DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = categoryManager.GetById(id);
-            categoryManager.Delete(category);
-            return RedirectToAction("Index","Category");
+            var result = await client.DeleteAsync
+                (apiUrl + "DeleteById/" + id);
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category");
+            }
+            return View(result);
         }
     }
 }
