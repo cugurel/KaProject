@@ -1,5 +1,6 @@
 ﻿using CarProjectUI.Identity;
 using CarProjectUI.Models.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -54,6 +55,7 @@ namespace CarProjectUI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Register()
         {
             return View();
@@ -88,7 +90,7 @@ namespace CarProjectUI.Controllers
             if (result.Succeeded)
             {
                 TempData["EmailError"] = "Kayıt başarılı!";
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Index", "User");
             }
             return View();
         }

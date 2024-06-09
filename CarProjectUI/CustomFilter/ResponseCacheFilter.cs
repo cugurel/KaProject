@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Shared;
 
 namespace CarProjectUI.CustomFilter
 {
@@ -9,5 +10,6 @@ namespace CarProjectUI.CustomFilter
             Location = ResponseCacheLocation.None;
             NoStore = true;
         }
+
     }
 }
