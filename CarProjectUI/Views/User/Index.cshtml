@@ -248,7 +248,11 @@
                                             <td>@item.UserName</td>
                                             <td>@item.Email</td>
                                             <td><a href="/User/UpdateUser/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
-                                            <td><a href="/User/DeleteUser/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
+                                            @if (User.IsInRole("Admin") && User.IsInRole("Alt Yönetici"))
+                                            {
+                                                <td><a href="/User/DeleteUser/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
+                                            }
+                                            
                                         </tr>
                                     }
 

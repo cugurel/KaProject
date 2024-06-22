@@ -1,11 +1,15 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.ValidationRules;
+using CarProjectUI.Models;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
+using Newtonsoft.Json;
 
 namespace CarProjectUI.Controllers
 {
@@ -53,25 +57,44 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCar(Car car)
         {
-            if(car.File != null)
+            CarValidator cv = new CarValidator();
+            ValidationResult results = cv.Validate(car);
+
+            if (results.IsValid)
             {
-                var item = car.File;
-                var extend = Path.GetExtension(item.FileName);
-                var randomName = ($"{Guid.NewGuid()}{extend}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\CarImages", randomName);
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (car.File != null)
                 {
-                    await item.CopyToAsync(stream);
-                }
+                    var item = car.File;
+                    var extend = Path.GetExtension(item.FileName);
+                    var randomName = ($"{Guid.NewGuid()}{extend}");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\CarImages", randomName);
 
-                car.FileUrl = randomName;
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await item.CopyToAsync(stream);
+                    }
+
+                    car.FileUrl = randomName;
+                    _carService.Add(car);
+                    return Redirect("Index");
+                }
                 _carService.Add(car);
                 return Redirect("Index");
             }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
 
-            _carService.Add(car);
-            return Redirect("Index");
+                    var json =  JsonConvert.SerializeObject(item);
+                    ErrorInfo errorInfo = JsonConvert.DeserializeObject<ErrorInfo>(json);
+                    TempData["ErrorMessage"] = errorInfo.ErrorMessage;
+
+                }
+                return RedirectToAction("AddCar", "Car");
+            }
+
+
         }
 
         public IActionResult DeleteCar(int id)

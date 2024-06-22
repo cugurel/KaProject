@@ -92,7 +92,7 @@ namespace CarProjectUI.Controllers
             {
                 return RedirectToAction("Index", "Category");
             }
-
+            //PostAsync fonksiyonu iki parametre alır. Biri apiURL, diğeri ise gönderilen json contenti
             return View();
         }
 

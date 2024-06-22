@@ -84,5 +84,52 @@ namespace CarProjectUI.Controllers
 
             return View(model); 
         }
-    }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateRole(RoleEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var userId in model.IdsToAdd ?? new string[] { })
+                {
+                    var user = await _userManager.FindByIdAsync(userId);
+                    if(user != null)
+                    {
+                        var result = await _userManager.AddToRoleAsync(user, model.RoleName);
+
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                        }
+                    }
+
+                }
+
+				foreach (var userId in model.IdsToDelete ?? new string[] { })
+				{
+					var user = await _userManager.FindByIdAsync(userId);
+					if (user != null)
+					{
+						var result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+
+						if (!result.Succeeded)
+						{
+							foreach (var error in result.Errors)
+							{
+								ModelState.AddModelError("", error.Description);
+							}
+						}
+					}
+
+				}
+
+			}
+			return RedirectToAction("UpdateRole", "Role", new {id = model.RoleId});
+
+		}
+        
+	}
 }

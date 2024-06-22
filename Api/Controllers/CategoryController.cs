@@ -16,12 +16,18 @@ namespace Api.Controllers
             _categoryService = categoryService;
         }
 
+        //HttpGet -->Veri çekme
+        //HttpPost --> Veri kaydetme
+        //HttpPut --> Güncelleme
+        //HttpDelete --> Verileri id ile silmemize yarıyor.
+
+
 
         /// <summary>
         /// Tüm kategorileri listeler.
         /// </summary>
         [HttpGet("GetAllCategories")]
-        [ApiExplorerSettings(IgnoreApi = true)]
+        //[ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult GetAll()
         {
             var values = _categoryService.GetAll();
