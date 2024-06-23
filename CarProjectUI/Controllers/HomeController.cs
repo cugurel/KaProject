@@ -10,15 +10,6 @@ namespace CarProjectUI.Controllers
     
     public class HomeController : Controller
     {
-        Context c = new Context();
-        ICategoryService _categoryService;
-
-        public HomeController(ICategoryService categoryService)
-        {
-            _categoryService = categoryService;
-        }
-
-
         public IActionResult Index()
         {
             return View();
