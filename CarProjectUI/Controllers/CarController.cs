@@ -57,6 +57,27 @@ namespace CarProjectUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCar(Car car)
         {
+            Context c = new Context();
+            List<SelectListItem> categoryList = (from x in c.Categories.ToList()
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.Name,
+                                                     Value = x.Id.ToString()
+                                                 }).ToList();
+
+
+
+            var categories = c.Categories.ToList();
+            ViewBag.Category = categoryList;
+
+            List<SelectListItem> yearList = (from x in c.Years.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.YearInfo,
+                                                 Value = x.Id.ToString()
+                                             }).ToList();
+            ViewBag.Year = yearList;
+
             CarValidator cv = new CarValidator();
             ValidationResult results = cv.Validate(car);
 
@@ -89,12 +110,9 @@ namespace CarProjectUI.Controllers
                     var json =  JsonConvert.SerializeObject(item);
                     ErrorInfo errorInfo = JsonConvert.DeserializeObject<ErrorInfo>(json);
                     TempData["ErrorMessage"] = errorInfo.ErrorMessage;
-
                 }
-                return RedirectToAction("AddCar", "Car");
+                return View(car);
             }
-
-
         }
 
         public IActionResult DeleteCar(int id)

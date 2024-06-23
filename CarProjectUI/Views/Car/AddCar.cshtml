@@ -1,4 +1,5 @@
 ﻿@using Entity.Concrete
+@model Car
 <!DOCTYPE html>
 <html>
 
@@ -202,31 +203,24 @@
                                     }
                                     <form role="form" action="/Car/AddCar" method="post" enctype="multipart/form-data">
                                     <div class="col-sm-6 b-r">
-                                         
-                                        <div class="form-group"><label>İlan No</label> <input type="text" name="Announcement" class="form-control"></div>
-                                        <div class="form-group"><label>İlan Tarihi</label> <input type="date" name="AnnouncementDate" class="form-control"></div>
-                                        <div class="form-group"><label>Marka</label> <input type="text" name="Brand" class="form-control"></div>
-                                        <div class="form-group"><label>Seri</label> <input type="text" name="Serial" class="form-control"></div>
-                                        <div class="form-group"><label>Model</label> <input type="text" name="Model" class="form-control"></div>
-                                        <div class="form-group"><label>Fiyat</label> <input type="text" name="Price" class="form-control"></div>
+                                        <div class="form-group"><label>İlan No</label>
+                                                @Html.TextBoxFor(m => m.Announcement, new { @class = "form-control" })
+                                        </div>
+                                            <div class="form-group"><label>İlan Tarihi</label>@Html.TextBoxFor(m => m.AnnouncementDate, new { @class = "form-control", @type = "date" })</div>
+                                            <div class="form-group"><label>Marka</label> @Html.TextBoxFor(m => m.Brand, new { @class = "form-control" })</div>
+                                            <div class="form-group"><label>Seri</label> @Html.TextBoxFor(m => m.Serial, new { @class = "form-control" })</div>
+                                            <div class="form-group"><label>Model</label> @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })</div>
+                                            <div class="form-group"><label>Fiyat</label> @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })</div>
 
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group"><label>Yıl</label> @Html.DropDownList("Year", (List<SelectListItem>)ViewBag.Year, "Yıl Seçiniz", new { @name = "Year", @class = "form-control" })</div>
-                                        <div class="form-group"><label>Yakıt</label> <input type="text" name="Fuel" class="form-control"></div>
-                                        <div class="form-group"><label>Vites</label> <input type="text" name="Gear" class="form-control"></div>
-                                        <div class="form-group"><label>Km</label> <input type="text" name="Km" class="form-control"></div>
+                                            <div class="form-group"><label>Yıl</label> @Html.DropDownListFor(m => m.Year, (List<SelectListItem>)ViewBag.Year, "Yıl Seçiniz", new { @name = "Year", @class = "form-control" })</div>
+                                            <div class="form-group"><label>Yakıt</label> @Html.TextBoxFor(m => m.Fuel, new { @class = "form-control" })</div>
+                                            <div class="form-group"><label>Vites</label> @Html.TextBoxFor(m => m.Gear, new { @class = "form-control" })</div>
+                                            <div class="form-group"><label>Km</label> @Html.TextBoxFor(m => m.Km, new { @class = "form-control" })</div>
                                             <div class="form-group">
                                                 <label>Kategori Seçimi</label>
-                                                @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
-                                                
-                                                    @* select class="form-control" name="CategoryId">
-                                                        <option selected>Kategori Seçiniz</option>
-                                                        @foreach (var item in ViewBag.Categories as IEnumerable<Category>)
-                                                    {
-                                                        <option value="@item.Id">@item.Name</option>
-                                                    }
-                                                    </select> *@
+                                                @Html.DropDownListFor(m=>m.CategoryId, (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @name = "CategoryId", @class = "form-control" })
                                             </div>
                                             <div class="form-group"><label>Görsel</label> <input type="file" name="File" class="form-control"></div>
                                             <div>

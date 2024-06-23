@@ -1,4 +1,9 @@
-﻿<nav class="navbar-default navbar-static-side" role="navigation">
+﻿@{
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
@@ -24,67 +29,66 @@
                     IN+
                 </div>
             </li>
-            <li class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Kategori Yönetimi</span> <span class="fa arrow"></span></a>
+
+            <li class="@(currentController == "Category" ? "active" : "")">
+                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Kategori Yönetimi</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="active"><a href="/Category/Index">Kategori Listesi</a></li>
-                    <li><a href="/Category/AddCategory">Yeni Kategori Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "Category" ? "active" : "")"><a href="/Category/Index">Kategori Listesi</a></li>
+                    <li class="@(currentAction == "AddCategory" && currentController == "Category" ? "active" : "")"><a href="/Category/AddCategory">Yeni Kategori Ekle</a></li>
                 </ul>
             </li>
-            
-            
-            <li>
+
+            <li class="@(currentController == "Auth" || currentController == "User" ? "active" : "")">
                 <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Kullanıcı Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/Auth/Register">Kullanıcı Ekle</a></li>
-                    <li><a href="/User/Index">Kullanıcı Listesi</a></li>
+                    <li class="@(currentAction == "Register" && currentController == "Auth" ? "active" : "")"><a href="/Auth/Register">Kullanıcı Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "User" ? "active" : "")"><a href="/User/Index">Kullanıcı Listesi</a></li>
                 </ul>
             </li>
-            
-            
-            <li>
+
+            <li class="@(currentController == "Gallery" ? "active" : "")">
                 <a href="#"><i class="fa fa-taxi"></i> <span class="nav-label">Galeri Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/Gallery/AddGallery">Galeri Ekle</a></li>
-                    <li><a href="/Gallery/Index">Galeri Listesi</a></li>
+                    <li class="@(currentAction == "AddGallery" && currentController == "Gallery" ? "active" : "")"><a href="/Gallery/AddGallery">Galeri Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "Gallery" ? "active" : "")"><a href="/Gallery/Index">Galeri Listesi</a></li>
                 </ul>
             </li>
-           
-            <li>
+
+            <li class="@(currentController == "Car" ? "active" : "")">
                 <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Vasıta Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/Car/AddCar">Vasıta Ekle</a></li>
-                    <li><a href="/Car/Index">Vasıta Listesi</a></li>
+                    <li class="@(currentAction == "AddCar" && currentController == "Car" ? "active" : "")"><a href="/Car/AddCar">Vasıta Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "Car" ? "active" : "")"><a href="/Car/Index">Vasıta Listesi</a></li>
                 </ul>
             </li>
 
-            <li>
+            <li class="@(currentController == "Year" ? "active" : "")">
                 <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Yıl Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/Year/AddYear">Yıl Ekle</a></li>
-                    <li><a href="/Year/Index">Yıl Listesi</a></li>
+                    <li class="@(currentAction == "AddYear" && currentController == "Year" ? "active" : "")"><a href="/Year/AddYear">Yıl Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "Year" ? "active" : "")"><a href="/Year/Index">Yıl Listesi</a></li>
                 </ul>
             </li>
 
-            <li>
+            <li class="@(currentController == "Customer" ? "active" : "")">
                 <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Müşteri Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/Customer/AddCustomer">Müşteri Ekle</a></li>
-                    <li><a href="/Customer/Index">Müşteri Listesi</a></li>
+                    <li class="@(currentAction == "AddCustomer" && currentController == "Customer" ? "active" : "")"><a href="/Customer/AddCustomer">Müşteri Ekle</a></li>
+                    <li class="@(currentAction == "Index" && currentController == "Customer" ? "active" : "")"><a href="/Customer/Index">Müşteri Listesi</a></li>
                 </ul>
             </li>
 
             @if (User.IsInRole("Admin"))
             {
-                <li>
+                <li class="@(currentController == "Role" ? "active" : "")">
                     <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Rol Yönetimi</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="/Role/AddRole">Rol Ekle</a></li>
-                        <li><a href="/Role/Index">Rol Listesi</a></li>
+                        <li class="@(currentAction == "AddRole" && currentController == "Role" ? "active" : "")"><a href="/Role/AddRole">Rol Ekle</a></li>
+                        <li class="@(currentAction == "Index" && currentController == "Role" ? "active" : "")"><a href="/Role/Index">Rol Listesi</a></li>
                     </ul>
                 </li>
             }
-            
+
         </ul>
 
     </div>
