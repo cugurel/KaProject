@@ -48,7 +48,7 @@ namespace CarProjectUI.Controllers
             var result = await _signinManager.PasswordSignInAsync(user, loginModel.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
 
             return View();

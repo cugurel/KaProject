@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace CarProjectUI.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Controller
     {
         Context c = new Context();
@@ -21,13 +21,7 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.CarCount = c.Cars.Count();
-            ViewBag.CategoryCount = c.Categories.Count();
-            var categoryList = _categoryService.GetAll();
-
-            ViewBag.Title = "Yazýlým Geliþtirici";
-            TempData["NameAndSurname"] = "Çaðrý Uðurel";
-            return View(categoryList);
+            return View();
         }
 
         public IActionResult Privacy()

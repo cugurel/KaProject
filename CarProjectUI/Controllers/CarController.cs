@@ -1,14 +1,11 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.ValidationRules;
 using CarProjectUI.Models;
 using DataAccess.Concrete;
-using DataAccess.Concrete.EfRepository;
 using Entity.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 using Newtonsoft.Json;
 
 namespace CarProjectUI.Controllers
@@ -106,7 +103,6 @@ namespace CarProjectUI.Controllers
             {
                 foreach (var item in results.Errors)
                 {
-
                     var json =  JsonConvert.SerializeObject(item);
                     ErrorInfo errorInfo = JsonConvert.DeserializeObject<ErrorInfo>(json);
                     TempData["ErrorMessage"] = errorInfo.ErrorMessage;
