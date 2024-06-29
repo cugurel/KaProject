@@ -15,6 +15,9 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            //Rent classı bağımlılık yönetimi
+            builder.RegisterType<RentManager>().As<IRentService>().SingleInstance();
+            builder.RegisterType<EfRentRepository>().As<IRentDal>().SingleInstance();
 
             //Customer classı bağımlılık yönetimi
             builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();

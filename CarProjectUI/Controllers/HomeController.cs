@@ -10,8 +10,10 @@ namespace CarProjectUI.Controllers
     
     public class HomeController : Controller
     {
+        Context c = new Context();
         public IActionResult Index()
         {
+            ViewBag.FavCars = c.Cars.OrderByDescending(e => e.Id).Take(6).ToList();
             return View();
         }
 

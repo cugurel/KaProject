@@ -88,7 +88,12 @@
                     </ul>
                 </li>
             }
-
+            <li class="@(currentController == "Rent" ? "active" : "")">
+                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Müşteri Yönetimi</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@(currentAction == "Index" && currentController == "Rent" ? "active" : "")"><a href="/Customer/Index">Müşteri Listesi</a></li>
+                </ul>
+            </li>
         </ul>
 
     </div>

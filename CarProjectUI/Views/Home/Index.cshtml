@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html><html lang="en">
+﻿@using Entity.Concrete
+<!DOCTYPE html><html lang="en">
 
 
 <!-- Mirrored from pathsoft.kovalweb.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:56:57 GMT -->
 <head>
-
     <meta charset="utf-8">
 
     <title>PathSoft - #1 The Fastest HTML5 Template</title>
@@ -31,6 +31,9 @@
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons-outlined.woff2" as="font" type="font/woff2" crossorigin>
 
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -410,68 +413,7 @@
 <!-- Begin header -->
 <header class="header">
     <!-- Begin header top -->
-    <nav class="header-top">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                    <!-- Begin header top info -->
-                    <ul class="header-top-info">
-                        <li>
-                            <a href="mailto:mail@example.com">
-                                <i class="material-icons md-18">mail_outline</i>
-                                <span>mail@example.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:mail@example.com" class="formingHrefTel">
-                                <i class="material-icons md-18">phone_in_talk</i>
-                                <span>+1-888-777-1234</span>
-                            </a>
-                        </li>
-                        <li>
-                            <i class="material-icons material-icons-outlined md-18">schedule</i>
-                            <span>Mon - Fri: 9:00 - 18:00</span>
-                        </li>
-                    </ul><!-- Ennd header top info -->
-                </div>
-                <div class="col-auto">
-                    <div class="header-top-links">
-                        <!-- Begin widget socials -->
-                        <ul class="widget-socials">
-                            <li>
-                                <a href="#!" title="Facebook">
-                                    <svg viewBox="0 0 320 512"><use xlink:href="~/html/~/html/assets/img/sprite.svg#facebook-icon"></use></svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!" title="Instagram">
-                                                <svg viewBox="0 0 448 512"><use xlink:href="~/html/~/html/assets/img/sprite.svg#instagram-icon"></use></svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!" title="LinkedIn">
-                                                <svg viewBox="0 0 448 512"><use xlink:href="~/html/~/html/assets/img/sprite.svg#linkedin-icon"></use></svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!" title="Twitter">
-                                                <svg viewBox="0 0 512 512"><use xlink:href="~/html/~/html/assets/img/sprite.svg#twitter-icon"></use></svg>
-                                </a>
-                            </li>
-                        </ul><!-- End widget socials -->
-                        <div class="btn-group-outer">
-                            <div class="btn-group align-items-center">
-                                <a href="#header_modal" class="header-button header_modal_open">
-                                    <i class="material-icons">ring_volume</i>
-                                    <span>Callback</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav><!-- End header top -->
+    
     <!-- Begin header fixed -->
     <nav class="header-fixed">
         <div class="container">
@@ -487,8 +429,8 @@
                 <div class="col-auto header-fixed-col logo-wrapper">
                     <!-- Begin logo -->
                     <a href="https://pathsoft.kovalweb.com/" class="logo" title="PathSoft">
-                                    <img src="~/html/~/html/assets/img/logo.svg" width="133" height="36" alt="PathSoft">
-                    </a><!-- End logo -->
+                        <img src="/html/assets/img/logo.svg" width="133" height="36" alt="PathSoft">
+                    </a>
                 </div>
                 <div class="col-auto col-xl col-static header-fixed-col">
                     <div class="row flex-nowrap align-items-center justify-content-end">
@@ -1015,7 +957,7 @@
     </ul>
 </nav><!-- End main menu -->
                         </div>
-                        <div class="col-auto header-fixed-col col-static">
+                        @* <div class="col-auto header-fixed-col col-static">
                             <!-- Begin header actions -->
                             <ul class="header-actions">
                                 <!-- Begin header account -->
@@ -1146,7 +1088,7 @@
                                     </div>
                                 </li><!-- End header navbar -->
                             </ul><!-- End header actions -->
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </div>
@@ -1430,8 +1372,8 @@
 								<div class="col">
 									<div class="intro-content" style="--margin-left: 4rem;">
 										<div class="section-heading shm-none">
-											<h2 style="color:white;">IT Solution for Your Business</h2>
-											<p style="color:white; class="section-desc">Since our establishment, we have been delivering high-quality and sustainable software solutions for corporate business purposes.</p>
+											<h2 style="color:white;">PathSoft Araç Kiralama</h2>
+                                            <p style="color:white; class="section-desc">Rahatlığın ve Konforun Adresi! Her bütçeye uygun, geniş kiralık araç seçeneklerimizle, size en iyi hizmeti sunmak için buradayız.</p>
 										</div>
 								</div>
 							</div>
@@ -1505,126 +1447,33 @@
                         </div>
                         <div class="container">
                             <div class="row ig-items">
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
+                                @foreach (var item in ViewBag.FavCars as IEnumerable<Car>)
+                                {
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
+                                            <img data-src="/CarImages/@item.FileUrl"
+                                                 class="lazy ig-item-bg"
+                                                 src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                                                 alt="" />
+                                            <div class="ig-item-pos">
+                                                <div class="section-heading shm-none">
+                                                    <div class="section-subheading" style="color:white;">@item.Brand</div>
+                                                    <h2>@item.Model</h2>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="" id="openModalBtn" class="btn btn-with-icon btn-small ripple">
+                                                        <span id="openModalSpan">Aracı Kirala</span>
+                                                        <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9">
+                                                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                                                        </svg>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xl-4">
-                                    <div class="item-border-radius ig-item ig-large justify-content-end text-right align-items-end animate-item el el-4x3 ig-item-small">
-                                        <img data-src="/html/assets/img/shop/cat/b1.jpg"
-                                             class="lazy ig-item-bg"
-                                             src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                             alt="" />
-                                        <div class="ig-item-pos">
-                                            <div class="section-heading shm-none">
-                                                <div class="section-subheading">All for</div>
-                                                <h2>Gamers</h2>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="#!" class="btn btn-with-icon ripple btn-small btn-border">
-                                                    <span>Aracı Kirala</span>
-                                                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+                                
+                               
                             </div>
                         </div>
 
@@ -1792,7 +1641,7 @@
 							<div class="reviews-item item-style">
 								<div class="reviews-item-header">
 									<div class="reviews-item-img">
-										<img data-src="~/html/assets/img/auth-img-1.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+                                            <img data-src="/html/assets/img/p2.jpg" class="img-cover lazy" src="/html/assets/img/p2.jpg" alt="">
 									</div>
 									<div class="reviews-item-info">
 										<h4 class="reviews-item-name item-heading">Catherine Williams</h4>
@@ -1808,7 +1657,7 @@
 							<div class="reviews-item item-style">
 								<div class="reviews-item-header">
 									<div class="reviews-item-img">
-										<img data-src="~/html/assets/img/auth-img-2.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+                                            <img data-src="/html/assets/img/p6.jpg" class="img-cover lazy" src="/html/assets/img/p2.jpg" alt="">
 									</div>
 									<div class="reviews-item-info">
 										<h4 class="reviews-item-name item-heading">Rupert Wood</h4>
@@ -1824,7 +1673,7 @@
 							<div class="reviews-item item-style">
 								<div class="reviews-item-header">
 									<div class="reviews-item-img">
-										<img data-src="~/html/assets/img/auth-img-3.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+                                            <img data-src="/html/assets/img/p2.jpg" src="/html/assets/img/p2.jpg" class="/html/assets/img/p2.jpg" alt="">
 									</div>
 									<div class="reviews-item-info">
 										<h4 class="reviews-item-name item-heading">Samantha Brown</h4>
@@ -1928,7 +1777,7 @@
                     <div class="widget-brand-info">
                         <div class="widget-brand-info-main wbim-p">
                             <a href="https://pathsoft.kovalweb.com/" class="logo" title="PathSoft">
-                                <img data-src="~/html/assets/img/logo-white.svg" class="lazy" width="133" height="36" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="PathSoft">
+                                <img data-src="/html/assets/img/logo-white.svg" class="lazy" width="133" height="36" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="PathSoft">
                             </a>
                             <p>Our company has been developing high-quality and reliable software for corporate needs since 2008. We are renowned professionals of software development.</p>
                         </div>
@@ -2097,8 +1946,31 @@
         <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="~/html/assets/img/sprite.svg#arrow-right"></use></svg>
     </div>
 </div><!-- End cookie message -->
+            <div class="modal fade" id="rentalModal" tabindex="-1" role="dialog" aria-labelledby="rentalModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="rentalModalLabel">Aracı Kirala</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Buraya modal içeriğinizi ekleyin -->
+                            Aracı kiralama formu veya bilgileri buraya gelecek.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main><!-- End main -->
 
-	</main><!-- End main -->
+    
+    
+    
 <script src="~/html/assets/libs/jquery/jquery.min.js"></script>
 <script src="~/html/assets/libs/lozad/lozad.min.js"></script>
 <script src="~/html/assets/libs/device/device.js"></script>
@@ -2122,6 +1994,17 @@
 <script src="~/html/assets/js/custom.js"></script>
 <script src="~/html/assets/js/forms.js"></script>
 <script src="~/html/assets/js/custom-ecommerce.js"></script>
-	
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // <span> elementini id ile seç
+            const openModalSpan = document.getElementById('openModalSpan');
+
+            // <span> elementine tıklama olayını dinle
+            openModalSpan.addEventListener('click', function () {
+                // Modal'ı göster
+                $('#rentalModal').modal('show');
+            });
+        });
+    </script>
 </body>
 </html>
