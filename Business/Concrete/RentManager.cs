@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entity.Concrete;
+using Entity.Concrete.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace Business.Concrete
         public Rent GetById(int id)
         {
             return _rentDal.GetById(id);
+        }
+
+        public List<RentDto> GetRentalInfo()
+        {
+            return _rentDal.GetRentInfo();
         }
 
         public void Update(Rent t)

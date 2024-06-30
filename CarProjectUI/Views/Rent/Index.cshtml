@@ -1,9 +1,8 @@
 ﻿@using X.PagedList;
 @using X.PagedList.Mvc.Core;
 
-@using Entity.Concrete
-@model IEnumerable<Rent>
-
+@using Entity.Concrete.Dtos
+@model IEnumerable<RentDto>
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +20,7 @@
     <link href="~/projecttemp/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
     <link href="~/projecttemp/css/animate.css" rel="stylesheet">
     <link href="~/projecttemp/css/style.css" rel="stylesheet">
-
+    
 </head>
 
 <body>
@@ -237,6 +236,8 @@
                                         <th>İsim</th>
                                         <th>Soyisim</th>
                                         <th>Telefon</th>
+                                        <th>Marka</th>
+                                        <th>Model</th>
                                         <th>Kiralama Tarihi</th>
                                         <th>Teslim Tarihi</th>
                                         <th>Düzenle</th>
@@ -250,8 +251,10 @@
                                             <td>@item.Name</td>
                                             <td>@item.Surname</td>
                                             <td>@item.Phone</td>
-                                            <td>@item.StartDate</td>
-                                            <td>@item.EndDate</td>
+                                            <td>@item.Brand</td>
+                                            <td>@item.Model</td>
+                                            <td>@item.StartDate.ToShortDateString()</td>
+                                            <td>@item.EndDate.ToShortDateString()</td>
                                             <td><a href="/Rent/UpdateRent/@item.Id" class="btn btn-primary btn-sm">Düzenle</a></td>
                                             <td><a href="/Rent/DeleteRent/@item.Id" class="btn btn-danger btn-sm">Sil</a></td>
                                         </tr>
@@ -978,4 +981,6 @@
         }
     </style>
 </body>
+
+
 </html>

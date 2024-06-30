@@ -1,4 +1,5 @@
 ﻿@using Entity.Concrete
+@using System.Web
 <!DOCTYPE html>
 <html lang="en">
 
@@ -462,521 +463,41 @@
                                                 <li class="menu-item-has-children">
                                                     <a href="index.html" data-title="Anasayfa">
                                                         <span>Anasayfa</span>
-                                                        @* <i class="material-icons">expand_more</i> *@
                                                     </a>
-                                                    @*  <ul>
-                                                    <li><a href="index.html" data-title="Home 1"><span>Home 1</span></a></li>
-                                                    <li><a href="home-2.html" data-title="Home 2"><span>Home 2</span></a></li>
-                                                    <li><a href="home-3.html" data-title="Home 3"><span>Home 3</span></a></li>
-                                                    <li><a href="home-4.html" data-title="Home 4"><span>Home 4</span></a></li>
-                                                    <li><a href="home-5.html" data-title="Home 5"><span>Home 5</span></a></li>
-                                                    <li><a href="home-6.html" data-title="Home 6"><span>Home 6</span></a></li>
-                                                    <li><a href="home-shop-1.html" data-title="Grocery"><span>Grocery</span><div><div class="badge badge-danger">Store</div></div></a></li>
-                                                    <li><a href="home-shop-2.html" data-title="Electronics"><span>Electronics</span><div><div class="badge badge-danger">Store</div></div></a></li>
-                                                    <li><a href="home-shop-3.html" data-title="Shoe"><span>Shoe</span><div><div class="badge badge-danger">Store</div></div></a></li>
-                                                    </ul> *@
                                                 </li>
                                                 <li class="mega-menu menu-item-has-children">
-                                                    <a href="#!" data-title="Araçlar">
+                                                    <a href="/Vehicle/Index" data-title="Araçlar">
                                                         <span>Araçlar</span>
                                                         <div>
-                                                            <i class="material-icons">expand_more</i>
+                                                            
                                                         </div>
                                                     </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="#!" data-title="Section 1">
-                                                                <span>Section 1</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="section-base.html" data-title="Section base">
-                                                                        <span>Section base</span>
-                                                                        <div><div class="badge badge-primary">Default</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-intro.html" data-title="Intro">
-                                                                        <span>Intro</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-about.html" data-title="About">
-                                                                        <span>About</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-about-tabs-carousel.html" data-title="About Tabs/Carousel">
-                                                                        <span>About Tabs/Carousel</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-about-circular-icons.html" data-title="About circular icons">
-                                                                        <span>About circular icons</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-items-of-numbers.html" data-title="Items of numbers">
-                                                                        <span>Items of numbers</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-counters.html" data-title="Counters">
-                                                                        <span>Counters</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-process-steps.html" data-title="Process steps">
-                                                                        <span>Process steps</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-testimonials.html" data-title="Testimonials">
-                                                                        <span>Testimonials</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#!" data-title="Section 2">
-                                                                <span>Section 2</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="section-image-items-type-1.html" data-title="Image items | Type 1">
-                                                                        <span>Image items | Type 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-image-items-type-2.html" data-title="Image items | Type 2">
-                                                                        <span>Image items | Type 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-image-items-type-3.html" data-title="Image items | Type 3">
-                                                                        <span>Image items | Type 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-image-items-type-4.html" data-title="Image items | Type 4">
-                                                                        <span>Image items | Type 4</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-icon-items-type-1.html" data-title="Icon items | Type 1">
-                                                                        <span>Icon items | Type 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-icon-items-type-2.html" data-title="Icon items | Type 2">
-                                                                        <span>Icon items | Type 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-icon-items-type-3.html" data-title="Icon items | Type 3">
-                                                                        <span>Icon items | Type 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-icon-items-type-4.html" data-title="Icon items | Type 4">
-                                                                        <span>Icon items | Type 4</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-countdown.html" data-title="Countdown">
-                                                                        <span>Countdown</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#!" data-title="Section 3">
-                                                                <span>Section 3</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="section-image-comparison.html" data-title="Image Comparison">
-                                                                        <span>Image Comparison</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="careers.html" data-title="Careers">
-                                                                        <span>Careers</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-team-type-1.html" data-title="Team | Type 1">
-                                                                        <span>Team | Type 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-team-type-2.html" data-title="Team | Type 2">
-                                                                        <span>Team | Type 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-classic.html" data-title="Gallery Classic">
-                                                                        <span>Gallery Classic</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-classic-no-padding.html" data-title="Gallery Classic No Padding">
-                                                                        <span>Gallery Classic No Padding</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-masonry.html" data-title="Gallery Masonry">
-                                                                        <span>Gallery Masonry</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-masonry-no-padding.html" data-title="Gallery Masonry No Padding">
-                                                                        <span>Gallery Masonry No Padding</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#!" data-title="Section 4">
-                                                                <span>Section 4</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="section-banner-grid.html" data-title="Banner Grid">
-                                                                        <span>Banner Grid</span>
-                                                                        <div><div class="badge badge-danger">Hot</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-progress-bars.html" data-title="Progress bars">
-                                                                        <span>Progress bars</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-pricing-type-1.html" data-title="Pricing | Type 1">
-                                                                        <span>Pricing | Type 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-pricing-type-2.html" data-title="Pricing | Type 2">
-                                                                        <span>Pricing | Type 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-pricing-type-3.html" data-title="Pricing | Type 3">
-                                                                        <span>Pricing | Type 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-brands.html" data-title="Brands">
-                                                                        <span>Brands</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-banner-row.html" data-title="Banner row">
-                                                                        <span>Banner row</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-tabs-accordions.html" data-title="Tabs &amp; Accordions">
-                                                                        <span>Tabs &amp; Accordions</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li class="menu-item-has-children main-mnu-item-mega-mnu">
                                                     <a href="shop.html" data-title="Popüler Lokasyonlar">
                                                         <span>Popüler Lokasyonlar</span>
-                                                        <i class="material-icons">expand_more</i>
                                                     </a>
-                                                    <div class="main-sub-mnu">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-3 mega-mnu-item">
-                                                                    <h5 class="mega-mnu-heading">Shop layouts</h5>
-                                                                    <ul class="main-sub-mnu-list main-sub-mnu-listh">
-                                                                        <li><a href="shop-fullwidth.html" data-title="Shop fullwidth"><span>Shop fullwidth</span></a></li>
-                                                                        <li><a href="shop.html" data-title="Shop left sidebar"><span>Shop left sidebar</span></a></li>
-                                                                        <li><a href="shop-right-sidebar.html" data-title="Shop right sidebar"><span>Shop right sidebar</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-3 mega-mnu-item">
-                                                                    <h5 class="mega-mnu-heading">Product Pages</h5>
-                                                                    <ul class="main-sub-mnu-list main-sub-mnu-listh">
-                                                                        <li><a href="product-single.html" data-title="Single Product"><span>Single Product</span></a></li>
-                                                                        <li><a href="product-single2.html" data-title="Single Product 2"><span>Single Product 2</span></a></li>
-                                                                        <li><a href="product-variable.html" data-title="Variable Product"><span>Variable Product</span></a></li>
-                                                                        <li><a href="product-group.html" data-title="Group Product"><span>Group Product</span></a></li>
-                                                                        <li><a href="product-affiliate.html" data-title="Affiliate Product"><span>Affiliate Product</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-3 mega-mnu-item">
-                                                                    <h5 class="mega-mnu-heading">Product Style</h5>
-                                                                    <ul class="main-sub-mnu-list main-sub-mnu-listh">
-                                                                        <li><a href="shop.html" data-title="Product Grid Style 1"><span>Product Grid Style 1</span></a></li>
-                                                                        <li><a href="shop2.html" data-title="Product Grid Style 2"><span>Product Grid Style 2</span></a></li>
-                                                                        <li><a href="shop3.html" data-title="Product Grid Style 3"><span>Product Grid Style 3</span></a></li>
-                                                                        <li><a href="shop4.html" data-title="Product Grid Style 4"><span>Product Grid Style 4</span></a></li>
-                                                                        <li><a href="shop-list.html" data-title="Product List"><span>Product List</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-3 mega-mnu-item">
-                                                                    <h5 class="mega-mnu-heading">Shop pages</h5>
-                                                                    <ul class="main-sub-mnu-list main-sub-mnu-listh">
-                                                                        <li><a href="cart.html" data-title="Cart"><span>Cart</span></a></li>
-                                                                        <li><a href="checkout.html" data-title="Checkout"><span>Checkout</span></a></li>
-                                                                        <li><a href="wishlist.html" data-title="Wishlist"><span>Wishlist</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </li>
                                                 <li class="mega-menu menu-item-has-children menu-item-6282">
                                                     <a href="#!" data-title="Ofislerimiz">
                                                         <span>Ofislerimiz</span>
-                                                        <div><i class="material-icons">expand_more</i></div>
                                                     </a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#!" data-title="Services List">
-                                                                <span>Services List</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="services-icon-1.html" data-title="Services icon 1">
-                                                                        <span>Services icon 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-icon-2.html" data-title="Services icon 2">
-                                                                        <span>Services icon 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-icon-3.html" data-title="Services icon 3">
-                                                                        <span>Services icon 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-icon-4.html" data-title="Services icon 4">
-                                                                        <span>Services icon 4</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-image-1.html" data-title="Services image 1">
-                                                                        <span>Services image 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-image-2.html" data-title="Services image 2">
-                                                                        <span>Services image 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-image-3.html" data-title="Services image 3">
-                                                                        <span>Services image 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="services-image-4.html" data-title="Services image 4">
-                                                                        <span>Services image 4</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#!" data-title="Portfolio List">
-                                                                <span>Portfolio List</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="projects-classic.html" data-title="Projects – Classic">
-                                                                        <span>Projects – Classic</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="projects-box.html" data-title="Projects – Box">
-                                                                        <span>Projects – Box</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="projects-image-flip.html" data-title="Projects – Image Flip">
-                                                                        <span>Projects – Image Flip</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="projects-image-hover.html" data-title="Projects – Image Hover">
-                                                                        <span>Projects – Image Hover</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-classic.html" data-title="Gallery Classic">
-                                                                        <span>Gallery Classic</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-classic-no-padding.html" data-title="Gallery Classic No Padding">
-                                                                        <span>Gallery Classic No Padding</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-masonry.html" data-title="Gallery Masonry">
-                                                                        <span>Gallery Masonry</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="section-gallery-masonry-no-padding.html" data-title="Gallery Masonry No Padding">
-                                                                        <span>Gallery Masonry No Padding</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#!" data-title="Single Projects">
-                                                                <span>Single Projects</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="single-project-default-slider.html" data-title="Default Slider">
-                                                                        <span>Default Slider</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-image-comparison.html" data-title="Image Comparison">
-                                                                        <span>Image Comparison</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-mobile-kit.html" data-title="Mobile Kit">
-                                                                        <span>Mobile Kit</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-gallery-masonry.html" data-title="Gallery Masonry">
-                                                                        <span>Gallery Masonry</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-gallery-grid.html" data-title="Gallery Grid">
-                                                                        <span>Gallery Grid</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-image-list.html" data-title="Image List">
-                                                                        <span>Image List</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-project-zig-zag-image-text.html" data-title="Zig Zag Image-Text">
-                                                                        <span>Zig Zag Image-Text</span>
-                                                                        <div><div class="badge badge-success">New</div></div>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#!" data-title="Other Pages">
-                                                                <span>Other Pages</span>
-                                                                <div><i class="material-icons">chevron_right</i></div>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="about-us.html" data-title="About us">
-                                                                        <span>About us</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="careers.html" data-title="Careers">
-                                                                        <span>Careers</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-job.html" data-title="Career Single">
-                                                                        <span>Career Single</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="single-service.html" data-title="Service Single">
-                                                                        <span>Service Single</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="404.html" data-title="404: Default">
-                                                                        <span>404: Default</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="404-2.html" data-title="404: Styles">
-                                                                        <span>404: Styles</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li class="menu-item-has-children">
                                                     <a href="#!" data-title="Blog">
                                                         <span>Blog</span>
-                                                        <i class="material-icons">expand_more</i>
                                                     </a>
-                                                    <ul>
-                                                        <li><a href="ui.html" data-title="UI elements"><span>UI elements</span><div><div class="badge badge-danger">Hot</div></div></a></li>
-                                                        <li><a href="index-3.html" data-title="Header/Footer Default"><span>Header/Footer Default</span></a></li>
-                                                        <li><a href="index-2.html" data-title="Header/Footer Minimal"><span>Header/Footer Minimal</span></a></li>
-                                                        <li><a href="tables.html" data-title="Tables"><span>Tables</span></a></li>
-                                                        <li><a href="forms.html" data-title="Forms"><span>Forms</span></a></li>
-                                                        <li><a href="search-results.html" data-title="Search results"><span>Search results</span></a></li>
-                                                    </ul>
+                                                    
                                                 </li>
-                                                @* <li class="menu-item-has-children">
-                                                <a href="news.html" data-title="Müşteri İlişkileri">
-                                                <span>Müşteri İlişkileri</span>
-                                                <i class="material-icons">expand_more</i>
-                                                </a>
-                                                <ul>
-                                                <li><a href="news.html" data-title="News List"><span>News List</span></a></li>
-                                                <li><a href="news-grid.html" data-title="News Classic"><span>News Classic</span></a></li>
-                                                <li><a href="news-grid-2.html" data-title="News Grid"><span>News Grid</span></a></li>
-                                                <li><a href="news-right-sidebar.html" data-title="News Right Sidebar"><span>News Right Sidebar</span></a></li>
-                                                <li><a href="news-left-sidebar.html" data-title="News Left Sidebar"><span>News Left Sidebar</span></a></li>
-                                                <li><a href="news-timeline.html" data-title="News Timeline"><span>News Timeline</span><div><div class="badge badge-danger">Hot</div></div></a></li>
-                                                <li><a href="news-post.html" data-title="News Post"><span>News Post</span></a></li>
-                                                </ul>
-                                                </li> *@
+                                                
                                                 <li class="menu-item-has-children">
                                                     <a href="contacts.html" data-title="Bize Ulaşın">
                                                         <span>Bize Ulaşın</span>
-                                                        <i class="material-icons">expand_more</i>
                                                     </a>
-                                                    <ul>
-                                                        <li><a href="contacts.html" data-title="Classic"><span>Classic</span></a></li>
-                                                        <li><a href="contacts-offices.html" data-title="Classic – Offices"><span>Classic – Offices</span></a></li>
-                                                        <li><a href="contacts-company.html" data-title="Company"><span>Company</span></a></li>
-                                                        <li><a href="contacts-company-classic.html" data-title="Company Classic"><span>Company Classic</span></a></li>
-                                                        <li><a href="contacts-agency.html" data-title="Agency Classic"><span>Agency Classic</span></a></li>
-                                                        <li><a href="contacts-agency-offices.html" data-title="Agency Classic – Offices"><span>Agency Classic – Offices</span></a></li>
-                                                    </ul>
+                                                    
                                                 </li>
                                             </ul>
                                         </nav><!-- End main menu -->
@@ -1260,23 +781,43 @@
                 <div class="popup">
                     <div class="popup_content">
                         <h4 class="popup_heading">Aracı Kirala</h4>
-                        <form>
-                            <input type="hidden" id="carId" name="carId" value="">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <form action="/Rent/RentCar" method="post">
+                            <input type="hidden" id="carId" name="CarId" value="">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Ad</label>
+                                    <input type="text" class="form-control" name="Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Soyad</label>
+                                    <input type="text" class="form-control" name="Surname">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Telefon</label>
+                                    <input type="text" class="form-control" name="Phone">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Kiralama Tarihi</label>
+                                    <input type="date" class="form-control" name="StartDate">
+                                </div>
                             </div>
-
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Teslim Tarihi</label>
+                                    <input type="date" class="form-control" name="EndDate">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <!-- This is an empty column to balance the layout -->
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Talep Et</button>
                         </form>
                     </div>
                 </div>
-            </div><!-- End wishlist pop up -->
+            </div>
+            <!-- End wishlist pop up -->
 
             <div class="section-bgc intro">
                 <div class="flickity-dots-absolute" data-flickity='{ "bgLazyLoad": 1, "bgLazyLoad": true, "fade": true, "prevNextButtons": false }'>
@@ -1918,5 +1459,21 @@
             });
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Diğer içerikler -->
+    @if (TempData["RentSuccess"] != null)
+    {
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function (event) {
+                Swal.fire({
+                    title: 'Basarılı!',
+                    icon: 'success',
+                    confirmButtonText: 'Tamam'
+                });
+            });
+        </script>
+    }
 </body>
 </html>

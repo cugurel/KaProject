@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Entity.Concrete.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Business.Abstract
 {
     public interface IRentService:IGenericService<Rent>
     {
+        List<RentDto> GetRentalInfo();
     }
 }
