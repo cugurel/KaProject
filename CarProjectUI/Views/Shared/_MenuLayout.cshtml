@@ -94,6 +94,14 @@
                     <li class="@(currentAction == "Index" && currentController == "Rent" ? "active" : "")"><a href="/Rent/Index">Kiralama Listesi</a></li>
                 </ul>
             </li>
+
+            <li class="@(currentController == "Article" ? "active" : "")">
+                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Lokasyon Yönetimi</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@(currentAction == "Index" && currentController == "Article" ? "active" : "")"><a href="/Article/Index">Lokasyon Listesi</a></li>
+                    <li class="@(currentAction == "AddArticle" && currentController == "Article" ? "active" : "")"><a href="/Article/AddArticle">Lokasyon Ekle</a></li>
+                </ul>
+            </li>
         </ul>
 
     </div>
