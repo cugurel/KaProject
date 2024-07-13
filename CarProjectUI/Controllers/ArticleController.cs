@@ -9,8 +9,8 @@ namespace CarProjectUI.Controllers
     public class ArticleController : Controller
     {
         IArticleService _articleService;
-
-        public ArticleController(IArticleService articleService)
+        
+        public ArticleController(IArticleService articleService, ICommentService commentService)
         {
             _articleService = articleService;
         }
@@ -18,6 +18,12 @@ namespace CarProjectUI.Controllers
         public IActionResult Index()
         {
             var article = _articleService.GetAll();
+            return View(article);
+        }
+
+        public IActionResult ArticleDetail(int id)
+        {
+            var article = _articleService.GetById(id);
             return View(article);
         }
 
@@ -53,14 +59,44 @@ namespace CarProjectUI.Controllers
         [HttpGet]
         public IActionResult UpdateArticle(int id)
         {
+
             var article = _articleService.GetById(id);
             return View(article);
         }
 
         [HttpPost]
-        public IActionResult UpdateArticle(Article article)
+        public async Task<IActionResult> UpdateArticle(Article article)
         {
-            _articleService.Update(article);
+            if (article.File != null)
+            {
+                var item = article.File;
+                var extend = Path.GetExtension(item.FileName);
+                var randomName = ($"{Guid.NewGuid()}{extend}");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\ArticleImages", randomName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await item.CopyToAsync(stream);
+                }
+                article.UpdatedDate = DateTime.Now;
+                article.FileUrl = randomName;
+                _articleService.Update(article);
+            }
+
+            var value = _articleService.GetById(article.Id);
+            if(value.FileUrl == null)
+            {
+                article.UpdatedDate = DateTime.Now;
+                article.FileUrl = null;
+                _articleService.Update(article);
+            }
+            else
+            {
+                article.UpdatedDate = DateTime.Now;
+                article.FileUrl = value.FileUrl;
+                _articleService.Update(article);
+            }
+            
             return Redirect("Index");
         }
 
@@ -70,5 +106,7 @@ namespace CarProjectUI.Controllers
             _articleService.Delete(article);
             return RedirectToAction("Index","Article");
         }
+
+        
     }
 }

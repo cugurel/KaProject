@@ -63,7 +63,7 @@
             </li>
 
             <li class="@(currentController == "Year" ? "active" : "")">
-                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Yıl Yönetimi</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Yıl Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li class="@(currentAction == "AddYear" && currentController == "Year" ? "active" : "")"><a href="/Year/AddYear">Yıl Ekle</a></li>
                     <li class="@(currentAction == "Index" && currentController == "Year" ? "active" : "")"><a href="/Year/Index">Yıl Listesi</a></li>
@@ -71,7 +71,7 @@
             </li>
 
             <li class="@(currentController == "Customer" ? "active" : "")">
-                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Müşteri Yönetimi</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Müşteri Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li class="@(currentAction == "AddCustomer" && currentController == "Customer" ? "active" : "")"><a href="/Customer/AddCustomer">Müşteri Ekle</a></li>
                     <li class="@(currentAction == "Index" && currentController == "Customer" ? "active" : "")"><a href="/Customer/Index">Müşteri Listesi</a></li>
@@ -81,7 +81,7 @@
             @if (User.IsInRole("Admin"))
             {
                 <li class="@(currentController == "Role" ? "active" : "")">
-                    <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Rol Yönetimi</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-eyedropper"></i> <span class="nav-label">Rol Yönetimi</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="@(currentAction == "AddRole" && currentController == "Role" ? "active" : "")"><a href="/Role/AddRole">Rol Ekle</a></li>
                         <li class="@(currentAction == "Index" && currentController == "Role" ? "active" : "")"><a href="/Role/Index">Rol Listesi</a></li>
@@ -89,14 +89,14 @@
                 </li>
             }
             <li class="@(currentController == "Rent" ? "active" : "")">
-                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Kiralama Yönetimi</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cc-visa"></i> <span class="nav-label">Kiralama Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li class="@(currentAction == "Index" && currentController == "Rent" ? "active" : "")"><a href="/Rent/Index">Kiralama Listesi</a></li>
                 </ul>
             </li>
 
             <li class="@(currentController == "Article" ? "active" : "")">
-                <a href="#"><i class="fa fa-automobile"></i> <span class="nav-label">Lokasyon Yönetimi</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-location-arrow"></i> <span class="nav-label">Lokasyon Yönetimi</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li class="@(currentAction == "Index" && currentController == "Article" ? "active" : "")"><a href="/Article/Index">Lokasyon Listesi</a></li>
                     <li class="@(currentAction == "AddArticle" && currentController == "Article" ? "active" : "")"><a href="/Article/AddArticle">Lokasyon Ekle</a></li>

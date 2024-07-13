@@ -1,11 +1,11 @@
 ﻿@using Entity.Concrete
-@using X.PagedList
-@using X.PagedList.Mvc.Core
-@model IEnumerable<Car>
+@model Article
+
+
 <!DOCTYPE html><html lang="en">
 
 
-<!-- Mirrored from pathsoft.kovalweb.com/html/news.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
+<!-- Mirrored from pathsoft.kovalweb.com/html/news-post.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
 <head>
 
     <meta charset="utf-8">
@@ -18,8 +18,8 @@
         
     <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon"> 
 
-<link rel="stylesheet" href="~/html/assets/css/bootstrap-grid.css">
-<link rel="stylesheet" href="~/html/assets/libs/flickity/flickity.css">
+    <link rel="stylesheet" href="~/html/assets/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/html/assets/libs/flickity/flickity.css">
 <link rel="stylesheet" href="~/html/assets/libs/flickity/flickity-fade.css">
 <link rel="stylesheet" href="~/html/assets/libs/lightGallery/css/lightgallery.css">
 <link rel="stylesheet" href="~/html/assets/libs/lightGallery/css/lg-zoom.css">
@@ -27,14 +27,14 @@
 <link rel="stylesheet" href="~/html/assets/libs/lightGallery/css/lg-video.css">
 <link rel="stylesheet" href="~/html/assets/css/style.css">
 <link rel="stylesheet" href="~/html/assets/css/ecommerce.css">
-    <link rel="preload" href="~/html/assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/source-sans-pro-v21-latin/source-sans-pro-v21-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/montserrat-v25-latin/montserrat-v25-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/montserrat-v25-latin/montserrat-v25-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons-outlined.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -413,10 +413,7 @@
 
 <!-- Begin header -->
 <header class="header">
-    <!-- Begin header top -->
-    <!-- End header top -->
-    <!-- Begin header fixed -->
-                @await Html.PartialAsync("~/Views/Shared/_CustomerMenuLayout.cshtml")<!-- End header fixed -->
+                @await Html.PartialAsync("~/Views/Shared/_CustomerMenuLayout.cshtml")
 </header><!-- End header -->
 
 <!-- Begin side account -->
@@ -692,11 +689,9 @@
 					<div class="row">
 						<div class="col-12">
 							<ul class="bread-crumbs-list">
-								<li>
-									<a href="index.html">Anasayfa</a>
-									<i class="material-icons md-18">chevron_right</i>
-								</li>
-								<li>Araçlar</li>
+								<li><a href="index.html">Anasayfa</a><i class="material-icons md-18">chevron_right</i></li>
+								<li><a href="news.html">Popüler Lokasyonlar</a><i class="material-icons md-18">chevron_right</i></li>
+								<li>@Model.Title</li>
 							</ul>
 						</div>
 					</div>
@@ -707,91 +702,186 @@
 				<div class="container">
 					<div class="row content-items">
 						<div class="col-lg-9 col-12 content-item">
-							<div class="section-heading heading-center section-heading-animate">
-								<h1>Tüm Araçlar</h1>
+							<div class="news-post">
+								<header class="news-post-header">
+									<h1 class="news-post-title">@Model.Title</h1>
+									<div class="news-post-meta">
+										<div class="news-post-meta-item">
+											<i class="material-icons md-22">access_time</i>
+                                            <span>@Model.CreatedDate?.ToShortDateString()</span>
+										</div>
+										<div class="news-post-meta-item">
+											<span>by &nbsp;</span>
+											<a href="#!">John Doe</a>
+										</div>
+										<div class="news-post-meta-item">
+											<i class="material-icons md-20">chat_bubble</i>
+											<span>18</span>
+										</div>
+									</div>
+									<div class="news-post-img item-bordered item-border-radius">
+                                        <img data-src="/ArticleImages/@Model.FileUrl" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+									</div>
+								</header>
+								<article class="news-post-article content">
+									<p>@Model.Content</p>
+									
+								
 							</div>
-							<div class="news-list items">
-								<!-- Begin news item -->
-                                @foreach (var item in Model)
-                                {
-                                    <article class="news-wide-item item">
-                                        <a href="news-post.html" class="news-wide-item-img item-bordered item-border-radius">
-                                            <img data-src="/CarImages/@item.FileUrl" class="lazy" style="width:300px; heigth:300px;">
-                                        </a>
-                                        <div class="news-wide-item-info">
-                                            <h2 class="news-wide-item-heading item-heading">
-                                                <a href="news-post.html">@item.Brand - @item.Model</a>
-                                            </h2>
-                                            <div class="news-wide-item-row">
-                                                <div class="news-wide-item-date">Kilometre: @item.Km</div>
-                                                <div class="news-wide-item-author">
-                                                    Vites: <a href="#!">@item.Gear</a>
-                                                </div>
-                                            </div>
-                                            <div class="news-wide-item-desc">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment...</p>
-                                            </div>
-                                            <div class="wrapp-btn-link">
-                                                <a href="/Home/Index" class="btn-link">
-                                                    <span>Araç Detayları</span>
-                                                    <svg class="btn-link-ico btn-link-ico-right" viewBox="0 0 13 9" width="13" height="9" width="13px" height="9px"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                }
-								<!-- End news item -->
-
-                                <div class="row mx-2 mt-2 text-end">
-                                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Vehicle",
-                                             new { page = page }), new PagedListRenderOptions()
-                                    {
-                                        LiElementClasses = new string[] { "page-item" },
-                                        PageClasses = new string[] { "page-link" }
-                                    })
-                                </div>
-                            </div>
+							<div class="page-sections">
+								
+								<section class="section">
+									<div class="row">
+										<div class="col-12">
+											<h2>Lokasyon Hakkında Yorumlar</h2>
+											<!-- Begin comments -->
+											<div class="comments">
+												<!-- Begin comment item -->
+												<div class="comment-item item-style">
+													<div class="comment-item-row">
+														<header class="comment-item-header">
+															<div class="row">
+																<div class="col">
+																	<div class="comment-item-author">
+																		<div class="comment-item-author-img">
+																			<img data-src="assets/img/auth-img-1.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																		</div>
+																		<div class="comment-item-author-info">
+																			<h2 class="comment-item-author-name item-heading">Catherine Williams</h2>
+																			<p class="comment-item-author-date">Jan 23, 2021</p>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-auto">
+																	<a href="#!" class="comment-item-reply">Reply</a>
+																</div>
+															</div>
+														</header>
+														<div class="comment-item-desc">
+															<p>PathSoft offers a high caliber of resources skilled in Microsoft Azure.NET, mobile and Quality Assurance. They became our true business partners over the past three years.</p>
+														</div>
+													</div>
+													<div class="comment-item-list">
+														<div class="comment-item-row">
+															<header class="comment-item-header">
+																<div class="row">
+																	<div class="col">
+																		<div class="comment-item-author">
+																			<div class="comment-item-author-img">
+																				<img data-src="assets/img/auth-img-2.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																			</div>
+																			<div class="comment-item-author-info">
+																				<h2 class="comment-item-author-name item-heading">Rupert Wood</h2>
+																				<p class="comment-item-author-date">Jan 23, 2021</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-auto">
+																		<a href="#!" class="comment-item-reply">Reply</a>
+																	</div>
+																</div>
+															</header>
+															<div class="comment-item-desc">
+																<p>PathSoft offers a high caliber of resources skilled in Microsoft Azure.NET</p>
+															</div>
+														</div>
+														<div class="comment-item-row">
+															<header class="comment-item-header">
+																<div class="row">
+																	<div class="col">
+																		<div class="comment-item-author">
+																			<div class="comment-item-author-img">
+																				<img data-src="assets/img/auth-img-1.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																			</div>
+																			<div class="comment-item-author-info">
+																				<h2 class="comment-item-author-name item-heading">Catherine Williams</h2>
+																				<p class="comment-item-author-date">Jan 23, 2021</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-auto">
+																		<a href="#!" class="comment-item-reply">Reply</a>
+																	</div>
+																</div>
+															</header>
+															<div class="comment-item-desc">
+																<p>PathSoft offers a high caliber</p>
+															</div>
+														</div>
+													</div>
+												</div><!-- End comment item -->
+												<!-- Begin comment item -->
+												<div class="comment-item item-style">
+													<div class="comment-item-row">
+														<header class="comment-item-header">
+															<div class="row">
+																<div class="col">
+																	<div class="comment-item-author">
+																		<div class="comment-item-author-img">
+																			<img data-src="assets/img/auth-img-3.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																		</div>
+																		<div class="comment-item-author-info">
+																			<h2 class="comment-item-author-name item-heading">Samantha Brown</h2>
+																			<p class="comment-item-author-date">Jan 23, 2021</p>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-auto">
+																	<a href="#!" class="comment-item-reply">Reply</a>
+																</div>
+															</div>
+														</header>
+														<div class="comment-item-desc">
+															<p>PathSoft offers a high caliber of resources skilled in Microsoft Azure.NET, mobile and Quality Assurance. They became our true business partners over the past three years.</p>
+														</div>
+													</div>
+												</div><!-- End comment item -->
+											</div><!-- End comments -->
+										</div>
+									</div>
+								</section>
+								<section class="section">
+									<div class="row">
+										<div class="col-12">
+											<h2>Yorum Ekleyin</h2>
+											<form action="/Location/AddComment" method="post" class="form-submission comments-form">
+												<div class="row gutters-default">
+                                                    <input type="hidden" class="form-field-input" name="ArticleId" value="@Model.Id">
+													<div class="col-sm-6 col-6">
+														<div class="form-field">
+															<label for="comments-name" class="form-field-label">İsminiz</label>
+															<input type="text" class="form-field-input" name="Name" value="" ">
+														</div>
+													</div>
+													<div class="col-sm-6 col-6">
+														<div class="form-field">
+															<label for="comments-email" class="form-field-label">Email</label>
+															<input type="email" class="form-field-input" name="Email" >
+														</div>
+													</div>
+													<div class="col-12">
+														<div class="form-field">
+															<label for="comments-message" class="form-field-label">İçerik</label>
+															<textarea name="Content" class="form-field-input"  cols="30" rows="6"></textarea>
+														</div>
+													</div>
+													<div class="col-12">
+														<div class="form-btn">
+															<button type="submit" class="btn btn-w240 ripple"><span>Yorumu Ekle</span></button>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</section>
+							</div>
 						</div>
 						<div class="col-lg-3 col-12 content-item">
 							<!-- Begin sidebar -->
-<aside class="sidebar items">
+<aside class="sidebar items mt-5">
     <div class="sidebar-item item">
-        <form action="#!" method="post">
-            <div class="form-field">
-                <label for="sidebar-field-search" class="form-field-label">Search...</label>
-                <input type="search" class="form-field-input" name="Search" value="" autocomplete="off" id="sidebar-field-search">
-                <button type="submit" class="search-btn"><i class="material-icons md-22">search</i></button>
-            </div>
-        </form>
-    </div>
-    <div class="sidebar-item item">
-        <div class="section-bgc sibebar-item-bg-style">
-            <p class="sidebar-item-heading item-heading">Sign Up to News</p>
-            <p class="sidebar-item-desc">Subscribe to our news to get the latest updates and offers</p>
-            <form action="#!" method="post" class="form-submission subscribe-news-form" novalidate>
-                <div class="form-field">
-                    <label for="subscribe-news-email" class="form-field-label">Your Email</label>
-                    <input type="email" class="form-field-input" name="SubscribeEmail" value="" autocomplete="off" id="subscribe-news-email" required data-pristine-required-message="This field is required." data-pristine-email-message="Please enter a valid email address.">
-                </div>
-                <div class="form-btn">
-                    <button type="submit" class="btn btn-wide ripple"><span>Send Message</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="sidebar-item item">
-        <p class="sidebar-item-heading item-heading">Featured Tags</p>
-        <ul class="sidebar-tags">
-            <li><a href="#!">Software</a></li>
-            <li><a href="#!">Development</a></li>
-            <li><a href="#!">Programming</a></li>
-            <li><a href="#!">Software</a></li>
-            <li><a href="#!">Development</a></li>
-            <li><a href="#!">IT</a></li>
-        </ul>
-    </div>
-    <div class="sidebar-item item">
-        <p class="sidebar-item-heading item-heading">Recent Posts</p>
+        <p class="sidebar-item-heading item-heading mt-5">Yakın Zamanda Yazılanlar</p>
         <ul class="sidebar-posts">
             <li>
                 <a href="#!" class="sidebar-post">
@@ -819,37 +909,7 @@
             </li>
         </ul>
     </div>
-    <div class="sidebar-item item">
-        <div class="section-bgc sibebar-item-bg-style">
-            <p class="sidebar-item-heading item-heading">Categories</p>
-            <ul class="sidebar-cat">
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Startup</a>
-                    <span class="sidebar-cat-count">25</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Software Development</a>
-                    <span class="sidebar-cat-count">14</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Hybrid Cloud Management</a>
-                    <span class="sidebar-cat-count">20</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Software Solutions</a>
-                    <span class="sidebar-cat-count">3</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Creating Better Software</a>
-                    <span class="sidebar-cat-count">18</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Through Design Thinking</a>
-                    <span class="sidebar-cat-count">9</span>
-                </li>
-            </ul>
-        </div>
-    </div>
+    
 </aside><!-- End sidebar -->
 						</div>
 					</div>
@@ -1061,10 +1121,9 @@
 <script src="~/html/assets/libs/gsap/ScrollTrigger.min.js"></script>
 <script src="~/html/assets/js/animations.js"></script>
 <script src="~/html/assets/js/custom.js"></script>
-<script src="~/html/assets/js/forms.js"></script>
 <script src="~/html/assets/js/custom-ecommerce.js"></script>
 	
 </body>
 
-<!-- Mirrored from pathsoft.kovalweb.com/html/news.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
+<!-- Mirrored from pathsoft.kovalweb.com/html/news-post.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
 </html>

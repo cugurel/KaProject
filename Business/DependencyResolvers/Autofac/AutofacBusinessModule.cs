@@ -15,6 +15,10 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            //Comment classı bağımlılık yönetimi
+            builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance();
+            builder.RegisterType<EfCommentRepository>().As<ICommentDal>().SingleInstance();
+
             //Rent classı bağımlılık yönetimi
             builder.RegisterType<ArticleManager>().As<IArticleService>().SingleInstance();
             builder.RegisterType<EfArticleRepository>().As<IArticleDal>().SingleInstance();
