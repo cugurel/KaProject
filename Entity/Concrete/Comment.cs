@@ -14,5 +14,13 @@ namespace Entity.Concrete
         public string Email { get; set; }
         public string Content { get; set; }
         public int ArticleId { get; set; }
+        public int Status { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
+        public Comment()
+        {
+            Status = 0;
+            CreatedDate = DateTime.Now;
+        }
     }
 }

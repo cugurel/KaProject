@@ -18,6 +18,7 @@ namespace Entity.Concrete.Dtos
         public string? Fuel { get; set; }
         public string? Gear { get; set; }
         public string? Km { get; set; }
+        public string? FileUrl { get; set; }
         public string? Price { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

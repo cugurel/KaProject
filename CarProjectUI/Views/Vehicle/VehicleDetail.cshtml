@@ -1,11 +1,8 @@
-﻿@using Entity.Concrete
-@using X.PagedList
-@using X.PagedList.Mvc.Core
-@model IEnumerable<Car>
-<!DOCTYPE html><html lang="en">
+﻿@using Entity.Concrete.Dtos
+@model CarCategoryDto
 
-
-<!-- Mirrored from pathsoft.kovalweb.com/html/news.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
@@ -16,9 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
         
-    <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="~/html/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-<link rel="stylesheet" href="~/html/assets/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/html/assets/css/bootstrap-grid.css">
 <link rel="stylesheet" href="~/html/assets/libs/flickity/flickity.css">
 <link rel="stylesheet" href="~/html/assets/libs/flickity/flickity-fade.css">
 <link rel="stylesheet" href="~/html/assets/libs/lightGallery/css/lightgallery.css">
@@ -34,7 +31,7 @@
 
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="~/html/assets/fonts/material-icons/material-icons-outlined.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -413,10 +410,7 @@
 
 <!-- Begin header -->
 <header class="header">
-    <!-- Begin header top -->
-    <!-- End header top -->
-    <!-- Begin header fixed -->
-                @await Html.PartialAsync("~/Views/Shared/_CustomerMenuLayout.cshtml")<!-- End header fixed -->
+                @await Html.PartialAsync("~/Views/Shared/_CustomerMenuLayout.cshtml")
 </header><!-- End header -->
 
 <!-- Begin side account -->
@@ -558,133 +552,7 @@
 </div><!-- End side cart -->
 
 <!-- Begin wishlist pop up -->
-<div id="wishlist_popup" class="popup_style wishlist_popup popup_style_sally open_popup" style="display:none;">
-    <div class="popup">
-        <div class="popup_content">
-            <h4 class="popup_heading">Wishlist (3)</h4>
-            <table class="table-secondary cart-table">
-                <tbody>
-                    <tr>
-                        <td class="cart-product">
-                            <a href="product-single.html" class="el card-image item-bordered item-border-radius">
-                                <img data-src="assets/img/shop/s-img1-d.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                            </a>
-                            <div class="cart-product-info">
-                                <h3 class="item-heading card-heading">
-                                    <a href="product-single.html" title="Green seedless grapes">Green seedless grapes</a>
-                                </h3>
-                                <div class="card-prices">
-                                    <div class="card-price">$16.50</div>
-                                </div>
-                                <span class="inventory-status product-info-is">In stock</span>
-                            </div>
-                        </td>
-                        <td class="cart-btn">
-                            <div class="d-md-none">
-                                <a href="#!" class="btn btn-wide btn-with-icon">
-                                    <i class="material-icons material-icons-outlined btn-icon-left md-22">shopping_cart</i>
-                                    <span>Add to cart</span>
-                                </a>
-                            </div>
-                            <div class="d-none d-md-block">
-                                <a href="#!" class="card-btn-icon el-ripple" aria-label="Add 'Current title' to your cart" rel="nofollow">
-                                    <i class="material-icons material-icons-outlined md-24">shopping_cart</i>
-                                </a>
-                            </div>
-                        </td>
-                        <td class="cart-remove" data-title="Remove">
-                            <a href="#!" aria-label="Remove this item" title="Remove"><i class="material-icons md-24">close</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart-product">
-                            <a href="product-single.html" class="el card-image item-bordered item-border-radius">
-                                <img data-src="assets/img/shop/s-img1-e.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                            </a>
-                            <div class="cart-product-info">
-                                <h3 class="item-heading card-heading">
-                                    <a href="product-single.html" title="Nikon AF-P DX Nikkor">Nikon AF-P DX Nikkor</a>
-                                </h3>
-                                <div class="card-prices">
-                                    <div class="card-price">$187.26</div>
-                                </div>
-                                <span class="inventory-status product-info-is">In stock</span>
-                            </div>
-                        </td>
-                        <td class="cart-btn">
-                            <div class="d-md-none">
-                                <a href="#!" class="btn btn-wide btn-with-icon">
-                                    <i class="material-icons material-icons-outlined btn-icon-left md-22">shopping_cart</i>
-                                    <span>Add to cart</span>
-                                </a>
-                            </div>
-                            <div class="d-none d-md-block">
-                                <a href="#!" class="card-btn-icon el-ripple" aria-label="Add 'Current title' to your cart" rel="nofollow">
-                                    <i class="material-icons material-icons-outlined md-24">shopping_cart</i>
-                                </a>
-                            </div>
-                        </td>
-                        <td class="cart-remove" data-title="Remove">
-                            <a href="#!" aria-label="Remove this item" title="Remove"><i class="material-icons md-24">close</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart-product">
-                            <a href="product-single.html" class="el card-image item-bordered item-border-radius">
-                                <img data-src="assets/img/shop/s-img1-b.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                            </a>
-                            <div class="cart-product-info">
-                                <h3 class="item-heading card-heading">
-                                    <a href="product-single.html" title="8th Muse">8th Muse</a>
-                                </h3>
-                                <div class="card-prices">
-                                    <div class="card-price">$43.00</div>
-                                </div>
-                                <span class="inventory-status product-info-is">In stock</span>
-                            </div>
-                        </td>
-                        <td class="cart-btn">
-                            <div class="d-md-none">
-                                <a href="#!" class="btn btn-wide btn-with-icon">
-                                    <i class="material-icons material-icons-outlined btn-icon-left md-22">shopping_cart</i>
-                                    <span>Add to cart</span>
-                                </a>
-                            </div>
-                            <div class="d-none d-md-block">
-                                <a href="#!" class="card-btn-icon el-ripple" aria-label="Add 'Current title' to your cart" rel="nofollow">
-                                    <i class="material-icons material-icons-outlined md-24">shopping_cart</i>
-                                </a>
-                            </div>
-                        </td>
-                        <td class="cart-remove" data-title="Remove">
-                            <a href="#!" aria-label="Remove this item" title="Remove"><i class="material-icons md-24">close</i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <footer class="wishlist-footer-links justify-content-between">
-                <a href="wishlist.html" class="btn btn-with-icon btn-small ripple">
-                    <span>Open wishlist</span>
-                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                </a>
-                <a href="#!" class="btn btn-border btn-with-icon btn-small ripple wishlist_popup_close">
-                    <span>Continue shopping</span>
-                    <svg class="btn-icon-right" viewBox="0 0 13 9" width="13" height="9"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                </a>
-            </footer>
-            <div class="products-empty wishlist-empty" style="display: none;">
-                <div class="products-empty-icon">
-                    <i class="material-icons material-icons-outlined md-36">favorite_border</i>
-                </div>
-                <div class="products-empty-message">No products in the wishlist</div>
-            </div>
-            <footer class="wishlist-footer-links justify-content-center" style="display: none;">
-                <a href="#!" class="wishlist_popup_close">Continue shopping</a>
-            </footer>
-        </div>
-        <div class="wishlist_popup_close popup_close"><i class="material-icons md-24">close</i></div>
-    </div>
-</div><!-- End wishlist pop up -->
+<!-- End wishlist pop up -->
 
 			<!-- Begin bread crumbs -->
 			<nav class="bread-crumbs">
@@ -693,166 +561,311 @@
 						<div class="col-12">
 							<ul class="bread-crumbs-list">
 								<li>
-									<a href="index.html">Anasayfa</a>
+									<a href="index.html">Araçlar</a>
 									<i class="material-icons md-18">chevron_right</i>
 								</li>
-								<li>Araçlar</li>
+								<li>
+									<a href="shop.html">Araç Detayları</a>
+									<i class="material-icons md-18">chevron_right</i>
+								</li>
+								<li>@Model.Brand @Model.Serial @Model.Model</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</nav><!-- End bread crumbs -->
-
-			<div class="section">
+            
+            <!-- Begin main content -->
+			<div class="section section-single-product">
 				<div class="container">
-					<div class="row content-items">
-						<div class="col-lg-9 col-12 content-item">
-							<div class="section-heading heading-center section-heading-animate">
-								<h1>Tüm Araçlar</h1>
+					<div class="row">
+						<div class="col-12">
+							<div class="section-heading card-page-heading2">
+								<h1>@Model.Brand - @Model.Serial @Model.Model</h1>
 							</div>
-							<div class="news-list items">
-								<!-- Begin news item -->
-                                @foreach (var item in Model)
-                                {
-                                    <article class="news-wide-item item">
-                                        <a href="news-post.html" class="news-wide-item-img item-bordered item-border-radius">
-                                            <img data-src="/CarImages/@item.FileUrl" class="lazy" style="width:300px; heigth:300px;">
-                                        </a>
-                                        <div class="news-wide-item-info">
-                                            <h2 class="news-wide-item-heading item-heading">
-                                                <a href="news-post.html">@item.Brand - @item.Model</a>
-                                            </h2>
-                                            <div class="news-wide-item-row">
-                                                <div class="news-wide-item-date">Kilometre: @item.Km</div>
-                                                <div class="news-wide-item-author">
-                                                    Vites: <a href="#!">@item.Gear</a>
-                                                </div>
-                                            </div>
-                                            <div class="news-wide-item-desc">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment...</p>
-                                            </div>
-                                            <div class="wrapp-btn-link">
-                                                <a href="/Vehicle/VehicleDetail/@item.Id" class="btn-link">
-                                                    <span>Araç Detayları</span>
-                                                    <svg class="btn-link-ico btn-link-ico-right" viewBox="0 0 13 9" width="13" height="9" width="13px" height="9px"><use xlink:href="assets/img/sprite.svg#arrow-right"></use></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                }
-								<!-- End news item -->
-
-                                <div class="row mx-2 mt-2 text-end">
-                                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Vehicle",
-                                             new { page = page }), new PagedListRenderOptions()
-                                    {
-                                        LiElementClasses = new string[] { "page-item" },
-                                        PageClasses = new string[] { "page-link" }
-                                    })
-                                </div>
-                            </div>
-						</div>
-						<div class="col-lg-3 col-12 content-item">
-							<!-- Begin sidebar -->
-<aside class="sidebar items">
-    <div class="sidebar-item item">
-        <form action="#!" method="post">
-            <div class="form-field">
-                <label for="sidebar-field-search" class="form-field-label">Search...</label>
-                <input type="search" class="form-field-input" name="Search" value="" autocomplete="off" id="sidebar-field-search">
-                <button type="submit" class="search-btn"><i class="material-icons md-22">search</i></button>
-            </div>
-        </form>
-    </div>
-    <div class="sidebar-item item">
-        <div class="section-bgc sibebar-item-bg-style">
-            <p class="sidebar-item-heading item-heading">Sign Up to News</p>
-            <p class="sidebar-item-desc">Subscribe to our news to get the latest updates and offers</p>
-            <form action="#!" method="post" class="form-submission subscribe-news-form" novalidate>
-                <div class="form-field">
-                    <label for="subscribe-news-email" class="form-field-label">Your Email</label>
-                    <input type="email" class="form-field-input" name="SubscribeEmail" value="" autocomplete="off" id="subscribe-news-email" required data-pristine-required-message="This field is required." data-pristine-email-message="Please enter a valid email address.">
-                </div>
-                <div class="form-btn">
-                    <button type="submit" class="btn btn-wide ripple"><span>Send Message</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="sidebar-item item">
-        <p class="sidebar-item-heading item-heading">Featured Tags</p>
-        <ul class="sidebar-tags">
-            <li><a href="#!">Software</a></li>
-            <li><a href="#!">Development</a></li>
-            <li><a href="#!">Programming</a></li>
-            <li><a href="#!">Software</a></li>
-            <li><a href="#!">Development</a></li>
-            <li><a href="#!">IT</a></li>
-        </ul>
-    </div>
-    <div class="sidebar-item item">
-        <p class="sidebar-item-heading item-heading">Recent Posts</p>
-        <ul class="sidebar-posts">
-            <li>
-                <a href="#!" class="sidebar-post">
-                    <div class="sidebar-post-img item-bordered item-border-radius">
-                        <img data-src="assets/img/news-img-1.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                    </div>
-                    <div class="sidebar-post-title">Benefits of Async/Await in Programming</div>
-                </a>
-            </li>
-            <li>
-                <a href="#!" class="sidebar-post">
-                    <div class="sidebar-post-img item-bordered item-border-radius">
-                        <img data-src="assets/img/news-img-2.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                    </div>
-                    <div class="sidebar-post-title">Key Considerations and Warnings of iPaaS</div>
-                </a>
-            </li>
-            <li>
-                <a href="#!" class="sidebar-post">
-                    <div class="sidebar-post-img item-bordered item-border-radius">
-                        <img data-src="assets/img/news-img-3.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
-                    </div>
-                    <div class="sidebar-post-title">Usage of Hibernate Query Language</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="sidebar-item item">
-        <div class="section-bgc sibebar-item-bg-style">
-            <p class="sidebar-item-heading item-heading">Categories</p>
-            <ul class="sidebar-cat">
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Startup</a>
-                    <span class="sidebar-cat-count">25</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Software Development</a>
-                    <span class="sidebar-cat-count">14</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Hybrid Cloud Management</a>
-                    <span class="sidebar-cat-count">20</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Software Solutions</a>
-                    <span class="sidebar-cat-count">3</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Creating Better Software</a>
-                    <span class="sidebar-cat-count">18</span>
-                </li>
-                <li class="sidebar-cat-item">
-                    <a href="#!" class="sidebar-cat-link">Through Design Thinking</a>
-                    <span class="sidebar-cat-count">9</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</aside><!-- End sidebar -->
+							<div class="card-page-rating cp-item">
+								<ul class="list-style-none card-rating card-rating-middle">
+									<li><i class="material-icons md-24">star</i></li>
+									<li><i class="material-icons md-24">star</i></li>
+									<li><i class="material-icons md-24">star</i></li>
+									<li><i class="material-icons md-24">star</i></li>
+									<li><i class="material-icons md-24">star</i></li>
+								</ul>
+								<div class="card-page-reviews"><a href="#!">3 (Ziyaretçi görüntüledi)</a></div>
+							</div>
+							<div class="tabs">
+								<ul class="tabs-nav">
+									<li class="active">Araba Hakkında</li>
+									<li>Açıklama</li>
+									<li>Teknik Özellikler</li>
+									<li class="tabs-reviews-link">Görüntüleme (3)</li>
+								</ul>
+								<div class="tabs-container">
+									<div class="tabs-item active">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="product-carusel">
+													<div class="item-border-radius item-bordered product-carusel-main">
+														<div class="card-image el pcm-item">
+                                                            <img src="/CarImages/@Model.FileUrl" alt="">
+														</div>
+														
+													</div>
+													
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="product-info">
+													<div class="product-info-main">
+														<div class="card-prices card-page-prices cp-item">
+															<div class="card-price">@Model.Price</div>
+														</div>
+														<div class="card-section-desc cp-item">
+															<p>Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.
+                                                                Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.
+                                                                Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.
+                                                                Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.
+                                                                Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.
+                                                            </p>
+														</div>
+														
+														<div class="card-page-actions cp-item">
+															<div class="cpa-row">
+																
+																<button class="cpa-btn">
+																	<div class="cpa-btn-icon">
+																		<i class="material-icons md-20">favorite_border</i>
+																	</div>
+																	<span>Add to wishlist</span>
+																</button>
+															</div>
+														</div>
+													</div>
+													<footer class="product-info-footer">
+														<ul class="list-style-none card-page-meta">
+                                                            <li>
+																<b>İlan No:</b>
+																<div><a href="#!">@Model.Announcement</a></div>
+															</li>
+                                                            <li>
+                                                                <b>İlan Tarihi:</b>
+                                                                <div><a href="#!">@Model.AnnouncementDate</a></div>
+                                                            </li>
+															<li>
+																<b>Kategori:</b>
+																<div><a href="#!">@Model.CategoryName</a></div>
+															</li>
+                                                            <li>
+                                                                <b>Yıl:</b>
+                                                                <div><a href="#!">@Model.Year</a></div>
+                                                            </li>
+														</ul>
+													</footer>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tabs-item content">
+										<p>Ex eius quo recusandae quia voluptatem eius tempore. Provident dolores ut enim explicabo magnam magnam dolor. Sit delectus qui sed et dolorem ex dolorem. Qui corrupti et nam quaerat doloremque et. Repellendus culpa minus debitis rerum. Velit ut odit sint sequi dolorum et doloribus. Ut ad ea harum quas adipisci. Nihil id assumenda aut harum quasi id. Iusto animi aspernatur voluptas exercitationem et consequatur ipsum. Et enim dolorum corrupti in est. Reiciendis ullam corporis perspiciatis libero fuga. Repudiandae totam vel ut quia porro cumque.</p>
+										<p>Aut similique non qui est. Et fuga doloremque harum consequatur illo facere. Molestiae voluptatem repudiandae iure inventore quidem nesciunt sint. Labore magnam magnam omnis. Quo corporis voluptatem et magnam. Quia ex laboriosam qui quasi praesentium libero est. Excepturi odit occaecati temporibus laborum rerum illum. Vel et mollitia dolor aliquam dolorem eaque.</p>
+									</div>
+									<div class="tabs-item">
+										<table class="table-border">
+											<tbody>
+												<tr>
+													<td><b>Marka</b></td>
+													<td>@Model.Brand</td>
+												</tr>
+												<tr>
+													<td><b>Seri</b></td>
+													<td>@Model.Serial</td>
+												</tr>
+												<tr>
+													<td><b>Model</b></td>
+													<td>@Model.Model</td>
+												</tr>
+												<tr>
+													<td><b>Yıl</b></td>
+													<td>@Model.Year</td>
+												</tr>
+												<tr>
+													<td><b>Yakıt</b></td>
+													<td>@Model.Fuel</td>
+												</tr>
+												<tr>
+													<td><b>Vites</b></td>
+													<td>@Model.Gear</td>
+												</tr>
+												<tr>
+													<td><b>Kilometre</b></td>
+													<td>@Model.Km</td>
+												</tr>
+												<tr>
+													<td><b>Kategori</b></td>
+													<td>@Model.CategoryName</td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+									<div class="tabs-item tabs-reviews-item">
+										<div class="row items">
+											<div class="col-xl-6 item">
+												<!-- Begin comments -->
+												<div class="comments">
+													<!-- Begin comment item -->
+													<div class="comment-item item-style">
+														<div class="comment-item-row">
+															<header class="comment-item-header">
+																<div class="row">
+																	<div class="col">
+																		<div class="comment-item-author">
+																			<div class="comment-item-author-img">
+																				<img data-src="assets/img/auth-img-1.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																			</div>
+																			<div class="comment-item-author-info">
+																				<h4 class="comment-item-author-name item-heading">Catherine Williams</h4>
+																				<p class="comment-item-author-date">February 12, 2021</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-auto">
+																		<ul class="list-style-none card-rating card-rating-middle comment-item-stars">
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																		</ul>
+																	</div>
+																</div>
+															</header>
+															<div class="comment-item-desc">
+																<p>I am 6 feet tall and 220 lbs. This shirt fit me perfectly in the chest and shoulders. My only complaint is that it is so long! I like to wear polo shirts untucked. This shirt goes completely past my rear end. If I wore it with ordinary shorts, you probably wouldnt be able to see the shorts at all – completely hidden by the shirt. It needs to be 4 to 5 inches shorter in terms of length to suit me. I have many RL polo shirts, and this one is by far the longest. I dont understand why.</p>
+															</div>
+														</div>
+													</div><!-- End comment item -->
+													<!-- Begin comment item -->
+													<div class="comment-item item-style">
+														<div class="comment-item-row">
+															<header class="comment-item-header">
+																<div class="row">
+																	<div class="col">
+																		<div class="comment-item-author">
+																			<div class="comment-item-author-img">
+																				<img data-src="assets/img/auth-img-2.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																			</div>
+																			<div class="comment-item-author-info">
+																				<h4 class="comment-item-author-name item-heading">Rupert Wood</h4>
+																				<p class="comment-item-author-date">February 06, 2021</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-auto">
+																		<ul class="list-style-none card-rating card-rating-middle comment-item-stars">
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																		</ul>
+																	</div>
+																</div>
+															</header>
+															<div class="comment-item-desc">
+																<p>The shirt was not the fabric I believed it to be. It says Classic Fit but was made like the older versions, not the soft cotton like my others. I don’t understand how the labels are the same but a completely different shirt. Oh well, stuck with it now.</p>
+															</div>
+														</div>
+													</div><!-- End comment item -->
+													<!-- Begin comment item -->
+													<div class="comment-item item-style">
+														<div class="comment-item-row">
+															<header class="comment-item-header">
+																<div class="row">
+																	<div class="col">
+																		<div class="comment-item-author">
+																			<div class="comment-item-author-img">
+																				<img data-src="assets/img/auth-img-3.jpg" class="img-cover lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+																			</div>
+																			<div class="comment-item-author-info">
+																				<h4 class="comment-item-author-name item-heading">Samantha Brown</h4>
+																				<p class="comment-item-author-date">January 24, 2021</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-auto">
+																		<ul class="list-style-none card-rating card-rating-middle comment-item-stars">
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star</i></li>
+																			<li><i class="material-icons md-24">star_border</i></li>
+																		</ul>
+																	</div>
+																</div>
+															</header>
+															<div class="comment-item-desc">
+																<p>My son loved this Jacket for his Senior Prom… He got sooo many compliments! He is slim build 5’11 and 150lbs … I ordered a large … it was a little big … but it was fine!</p>
+															</div>
+														</div>
+													</div><!-- End comment item -->
+												</div><!-- End comments -->
+											</div>
+											<div class="col-xl-6 item">
+												<h4>Leave a review</h4>
+												<form action="#!" method="post" class="comment-form">
+													<div class="row gutters-default">
+														<div class="col-12">
+															<p>Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+														</div>
+														<div class="col-sm-6 col-12">
+															<div class="form-field">
+																<label class="input-states-labelled" for="login-username">Your Name <span class="required">*</span></label>
+																<div class="form-field-group">
+																	<label for="comments-name" class="form-field-label">Name</label>
+																	<input type="text" class="form-field-input" name="CommentsName" value="" autocomplete="off" id="comments-name">
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-6 col-12">
+															<div class="form-field">
+																<label class="input-states-labelled" for="login-username">Your Email <span class="required">*</span></label>
+																<div class="form-field-group">
+																	<label for="comments-email" class="form-field-label">Email</label>
+																	<input type="email" class="form-field-input" name="CommentsEmail" value="" autocomplete="off" id="comments-email">
+																</div>
+															</div>
+														</div>
+														<div class="col-12">
+															<div class="form-field">
+																<label class="input-states-labelled" for="login-username">Your review <span class="required">*</span></label>
+																<div class="form-field-group">
+																	<label for="comments-message" class="form-field-label">Text...</label>
+																	<textarea name="CommentsMessage" class="form-field-input" id="comments-message" cols="30" rows="6" required="required"></textarea>
+																</div>
+															</div>
+															<div class="form-field">
+																<div class="checkbox">
+																	<input type="checkbox" class="checkbox-input" name="checkboxLogin" id="checkbox-comment-cookies-consent" checked="checked">
+																	<label for="checkbox-comment-cookies-consent" class="checkbox-label">Save my name and email in this browser for the next time I comment.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-12">
+															<div class="form-btn">
+																<button type="submit" class="btn btn-w240 ripple"><span>Submit</span></button>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 
@@ -1038,6 +1051,68 @@
     </div>
 </div><!-- End cookie message -->
 
+		<!-- Begin card preview -->
+<div id="card_preview_popup" class="popup_style card_preview_popup popup_style_sally open_popup" style="display:none;">
+    <div class="popup">
+        <div class="popup_content card-preview-container">
+            <a href="product-single.html" class="card-image item-border-radius item-bordered el card-preview-img">
+                <img data-src="assets/img/shop/s-img4-d.jpg" class="lazy" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+            </a>
+            <div class="card-preview-info">
+                <span class="inventory-status">In stock</span>
+                <h2 class="card-heading">
+                    <a href="product-single.html" title="Cherries">Cherries</a>
+                </h2>
+                <div class="card-page-rating">
+                    <ul class="list-style-none card-rating">
+                        <li><i class="material-icons md-20">star</i></li>
+                        <li><i class="material-icons md-20">star</i></li>
+                        <li><i class="material-icons md-20">star</i></li>
+                        <li><i class="material-icons md-20">star</i></li>
+                        <li><i class="material-icons md-20">star</i></li>
+                    </ul>
+                    <div class="card-page-reviews">3 (Ziyaretçi görüntüledi)</div>
+                </div>
+                <div class="card-prices cp-item">
+                    <div class="card-price">$21.00</div>
+                    <div class="card-old-price">$25.30</div>
+                </div>
+                <div class="card-section-desc cp-item">
+                    <p>Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facere quaerat. Et et aut quibusdam deleniti nisi sunt rerum.</p>
+                </div>
+                
+                <div class="card-page-actions cp-item">
+                    <div class="cpa-row">
+                        <button class="cpa-btn">
+                            <div class="cpa-btn-icon">
+                                <i class="material-icons md-22">compare_arrows</i>
+                            </div>
+                            <span>Compare</span>
+                        </button>
+                        <button class="cpa-btn">
+                            <div class="cpa-btn-icon">
+                                <i class="material-icons md-20">favorite_border</i>
+                            </div>
+                            <span>Add to wishlist</span>
+                        </button>
+                    </div>
+                </div>
+                <ul class="list-style-none card-page-meta">
+                    <li>
+                        <b>Category:</b>
+                        <div><a href="#!">Electronic</a></div>
+                    </li>
+                    <li>
+                        <b>Tag:</b>
+                        <div><a href="#!">Camera</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card_preview_popup_close popup_close"><i class="material-icons md-24">close</i></div>
+    </div>
+</div><!-- End card preview -->
+
 	</main><!-- End main -->
 
 <script src="~/html/assets/libs/jquery/jquery.min.js"></script>
@@ -1064,7 +1139,7 @@
 <script src="~/html/assets/js/forms.js"></script>
 <script src="~/html/assets/js/custom-ecommerce.js"></script>
 	
+	
 </body>
-
-<!-- Mirrored from pathsoft.kovalweb.com/html/news.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:28 GMT -->
+<!-- Mirrored from pathsoft.kovalweb.com/html/product-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Jun 2023 19:57:22 GMT -->
 </html>

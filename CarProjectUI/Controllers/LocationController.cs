@@ -11,13 +11,20 @@ namespace CarProjectUI.Controllers
 
         Context c = new Context();
 
+        IArticleService _articleService;
         ICommentService _commentService;
 
-        public LocationController(ICommentService commentService)
+        public LocationController(IArticleService articleService, ICommentService commentService)
         {
+            _articleService = articleService;
             _commentService = commentService;
         }
-
+        public IActionResult LocationDetail(int id)
+        {
+            ViewBag.Comments = _commentService.GetAll().Where(x => x.ArticleId == id && x.Status == 1).ToList();
+            var article = _articleService.GetById(id);
+            return View(article);
+        }
         public IActionResult Index(int page = 1)
         {
             var locations = c.Articles.ToList().ToPagedList(page, 2); ;
@@ -28,7 +35,7 @@ namespace CarProjectUI.Controllers
         public IActionResult AddComment(Comment comment)
         {
             _commentService.Add(comment);
-            return RedirectToAction("ArticleDetail", "Article", new {Id=comment.ArticleId});
+            return RedirectToAction("LocationDetail", "Location", new {Id=comment.ArticleId});
         }
     }
 }

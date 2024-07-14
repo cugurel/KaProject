@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EfRepository
                           join y in context.Years on c.Year equals y.Id 
                           select new CarCategoryDto
                           {
+                              FileUrl = c.FileUrl,
                               Id = c.Id,
                               Announcement = c.Announcement,
                               AnnouncementDate = c.AnnouncementDate,

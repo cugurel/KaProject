@@ -9,10 +9,11 @@ namespace CarProjectUI.Controllers
     public class ArticleController : Controller
     {
         IArticleService _articleService;
-        
+        ICommentService _commentService;
         public ArticleController(IArticleService articleService, ICommentService commentService)
         {
             _articleService = articleService;
+            _commentService = commentService;
         }
 
         public IActionResult Index()
@@ -23,6 +24,8 @@ namespace CarProjectUI.Controllers
 
         public IActionResult ArticleDetail(int id)
         {
+            
+
             var article = _articleService.GetById(id);
             return View(article);
         }
