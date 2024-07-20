@@ -15,6 +15,7 @@ namespace DataAccess.Concrete
             optionsBuilder.UseSqlServer("server = Cagri; database=CarProjectDb; integrated security = true; TrustServerCertificate=True;");
         }
 
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<Office> Offices { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Article> Articles { get; set; }

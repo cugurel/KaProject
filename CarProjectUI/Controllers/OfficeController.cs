@@ -50,7 +50,7 @@ namespace CarProjectUI.Controllers
         {
             var value = _officeService.GetById(id);
             _officeService.Delete(value);
-            return Redirect("index");
+            return RedirectToAction("Index", "Office");
         }
     }
 }
