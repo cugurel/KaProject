@@ -16,6 +16,10 @@ namespace Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             //Comment classı bağımlılık yönetimi
+            builder.RegisterType<OfficeManager>().As<IOfficeService>().SingleInstance();
+            builder.RegisterType<EfOfficeRepository>().As<IOfficeDal>().SingleInstance();
+
+            //Comment classı bağımlılık yönetimi
             builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance();
             builder.RegisterType<EfCommentRepository>().As<ICommentDal>().SingleInstance();
 
