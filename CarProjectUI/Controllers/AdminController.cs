@@ -19,8 +19,6 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.CarCount = c.Cars.Count();
-            ViewBag.CategoryCount = c.Categories.Count();
             var categoryList = _categoryService.GetAll();
 
             ViewBag.Title = "Yazılım Geliştirici";
