@@ -17,7 +17,8 @@ namespace CarProjectUI.Controllers
 
         public IActionResult Index(int page = 1)
         {
-            var cars = c.Cars.ToList().ToPagedList(page, 2); ;
+            var cars = c.Cars.ToList().ToPagedList(page, 2);
+            ViewBag.RecentCars = c.Cars.OrderByDescending(e => e.Id).Take(3).OrderByDescending(x=>x.Id).ToList();
             return View(cars);
         }
 
